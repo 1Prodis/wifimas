@@ -125,7 +125,7 @@ declare -A possible_alias_names=(
 								)
 
 #General vars
-airgeddon_version="11.41"
+wifimas_version="11.41"
 language_strings_expected_version="11.41-1"
 standardhandshake_filename="handshake-01.cap"
 standardpmkid_filename="pmkid_hash.txt"
@@ -144,8 +144,8 @@ pending_of_translation="[PoT]"
 escaped_pending_of_translation="\[PoT\]"
 standard_resolution="1024x768"
 curl_404_error="404: Not Found"
-rc_file_name=".airgeddonrc"
-alternative_rc_file_name="airgeddonrc"
+rc_file_name=".wifimasrc"
+alternative_rc_file_name="wifimasrc"
 language_strings_file="language_strings.sh"
 broadcast_mac="FF:FF:FF:FF:FF:FF"
 minimum_hcxdumptool_filterap_version="6.0.0"
@@ -227,7 +227,7 @@ urlscript_pins_dbfile_checksum="https://raw.githubusercontent.com/${github_user}
 urlscript_language_strings_file="https://raw.githubusercontent.com/${github_user}/${github_repository}/${branch}/${language_strings_file}"
 urlscript_options_config_file="https://raw.githubusercontent.com/${github_user}/${github_repository}/${branch}/${rc_file_name}"
 urlgithub_wiki="https://${repository_hostname}/${github_user}/${github_repository}/wiki"
-urlmerchandising_shop="https://airgeddon.creator-spring.com/"
+urlmerchandising_shop="https://wifimas.creator-spring.com/"
 mail="1prodis@proton.me"
 author="Prodis"
 
@@ -260,7 +260,7 @@ beef_port="3000"
 beef_control_panel_url="http://${loopback_ip}:${beef_port}/ui/panel"
 jshookfile="hook.js"
 beef_file="ag.beef.conf"
-beef_pass="airgeddon"
+beef_pass="wifimas"
 beef_db="beef.db"
 beef_default_cfg_file="config.yaml"
 beef_needed_brackets_version="0.4.7.2"
@@ -273,7 +273,7 @@ control_et_file="ag.et_control.sh"
 control_enterprise_file="ag.enterprise_control.sh"
 enterprisedir="enterprise/"
 certsdir="certs/"
-certspass="airgeddon"
+certspass="wifimas"
 default_certs_path="/etc/hostapd-wpe/certs/"
 default_certs_pass="whatever"
 webserver_file="ag.lighttpd.conf"
@@ -378,8 +378,8 @@ crunch_symbolcharset="!#$%/=?{}[]-*:;"
 hashcat_charsets=("?l" "?u" "?d" "?s")
 
 #Tmux vars
-airgeddon_uid=""
-session_name="airgeddon"
+wifimas_uid=""
+session_name="wifimas"
 tmux_main_window="wifimas-Main"
 no_hardcore_exit=0
 
@@ -409,7 +409,7 @@ function check_language_strings() {
 		generate_dynamic_line "wifimas" "title"
 		if [ "${language_file_found}" -eq 0 ]; then
 			echo_red "${language_strings_no_file[${language}]}"
-			if [ "${airgeddon_version}" = "6.1" ]; then
+			if [ "${wifimas_version}" = "6.1" ]; then
 				echo
 				echo_yellow "${language_strings_first_time[${language}]}"
 			fi
@@ -556,34 +556,34 @@ function language_strings_handling_messages() {
 	language_strings_failed_downloading["CHINESE"]="无法下载语言支持文件。检查您的互联网连接或从 手动下载 ${normal_color}${urlgithub}"
 
 	declare -gA language_strings_first_time
-	language_strings_first_time["ENGLISH"]="If you are seeing this message after an automatic update, don't be scared! It's probably because airgeddon has different file structure since version 6.1. It will be automatically fixed"
-	language_strings_first_time["SPANISH"]="Si estás viendo este mensaje tras una actualización automática, ¡no te asustes! probablemente es porque a partir de la versión 6.1 la estructura de ficheros de airgeddon ha cambiado. Se reparará automáticamente"
-	language_strings_first_time["FRENCH"]="Si vous voyez ce message après une mise à jour automatique ne vous inquiétez pas! A partir de la version 6.1 la structure de fichier d'airgeddon a changé. L'ajustement se fera automatiquement"
-	language_strings_first_time["CATALAN"]="Si estàs veient aquest missatge després d'una actualització automàtica, no t'espantis! probablement és perquè a partir de la versió 6.1 l'estructura de fitxers de airgeddon ha canviat. Es repararà automàticament"
-	language_strings_first_time["PORTUGUESE"]="Se você está vendo esta mensagem depois de uma atualização automática, não tenha medo! A partir da versão 6.1 da estrutura de arquivos do airgeddon mudou. Isso será corrigido automaticamente"
-	language_strings_first_time["RUSSIAN"]="Если вы видите это сообщение после автоматического обновления, не переживайте! Вероятно, это объясняется тем, что, начиная с версии 6.1, airgeddon имеет другую структуру файлов. Проблема будет разрешена автоматически"
-	language_strings_first_time["GREEK"]="Εάν βλέπετε αυτό το μήνυμα μετά από κάποια αυτόματη ενημέρωση, μην τρομάξετε! Πιθανόν είναι λόγω της διαφορετικής δομής του airgeddon μετά από την έκδοση 6.1. Θα επιδιορθωθεί αυτόματα"
-	language_strings_first_time["ITALIAN"]="Se stai vedendo questo messaggio dopo un aggiornamento automatico, niente panico! probabilmente è perché a partire dalla versione 6.1 é cambiata la struttura dei file di airgeddon. Sarà riparato automaticamente"
-	language_strings_first_time["POLISH"]="Jeśli widzisz tę wiadomość po automatycznej aktualizacji, nie obawiaj się! To prawdopodobnie dlatego, że w wersji 6.1 zmieniła się struktura plików airgeddon. Naprawi się automatycznie"
-	language_strings_first_time["GERMAN"]="Wenn Sie diese Nachricht nach einem automatischen Update sehen, haben Sie keine Angst! Das liegt vermutlich daran, dass ab Version 6.1 die Dateistruktur von airgeddon geändert wurde. Es wird automatisch repariert"
-	language_strings_first_time["TURKISH"]="Otomatik bir güncellemeden sonra bu mesajı görüyorsanız, korkmayın! muhtemelen 6.1 sürümünden itibaren airgeddon dosya yapısı değişmiştir. Otomatik olarak tamir edilecektir"
-	language_strings_first_time["ARABIC"]="إذا كنت ترى هذه الرسالة بعد التحديث التلقائي ، فلا تخف! ربما يرجع السبب في ذلك إلى أن airgeddon له بنية ملفات مختلفة منذ الإصدار 6.1. سيتم إصلاحه تلقائيًا "
-	language_strings_first_time["CHINESE"]="如果您在自动更新后看到此消息，请不要害怕！这可能是因为 airgeddon 从 6.1 版本开始有不同的文件结构。会自动修复"
+	language_strings_first_time["ENGLISH"]="If you are seeing this message after an automatic update, don't be scared! It's probably because wifimas has different file structure since version 6.1. It will be automatically fixed"
+	language_strings_first_time["SPANISH"]="Si estás viendo este mensaje tras una actualización automática, ¡no te asustes! probablemente es porque a partir de la versión 6.1 la estructura de ficheros de wifimas ha cambiado. Se reparará automáticamente"
+	language_strings_first_time["FRENCH"]="Si vous voyez ce message après une mise à jour automatique ne vous inquiétez pas! A partir de la version 6.1 la structure de fichier d'wifimas a changé. L'ajustement se fera automatiquement"
+	language_strings_first_time["CATALAN"]="Si estàs veient aquest missatge després d'una actualització automàtica, no t'espantis! probablement és perquè a partir de la versió 6.1 l'estructura de fitxers de wifimas ha canviat. Es repararà automàticament"
+	language_strings_first_time["PORTUGUESE"]="Se você está vendo esta mensagem depois de uma atualização automática, não tenha medo! A partir da versão 6.1 da estrutura de arquivos do wifimas mudou. Isso será corrigido automaticamente"
+	language_strings_first_time["RUSSIAN"]="Если вы видите это сообщение после автоматического обновления, не переживайте! Вероятно, это объясняется тем, что, начиная с версии 6.1, wifimas имеет другую структуру файлов. Проблема будет разрешена автоматически"
+	language_strings_first_time["GREEK"]="Εάν βλέπετε αυτό το μήνυμα μετά από κάποια αυτόματη ενημέρωση, μην τρομάξετε! Πιθανόν είναι λόγω της διαφορετικής δομής του wifimas μετά από την έκδοση 6.1. Θα επιδιορθωθεί αυτόματα"
+	language_strings_first_time["ITALIAN"]="Se stai vedendo questo messaggio dopo un aggiornamento automatico, niente panico! probabilmente è perché a partire dalla versione 6.1 é cambiata la struttura dei file di wifimas. Sarà riparato automaticamente"
+	language_strings_first_time["POLISH"]="Jeśli widzisz tę wiadomość po automatycznej aktualizacji, nie obawiaj się! To prawdopodobnie dlatego, że w wersji 6.1 zmieniła się struktura plików wifimas. Naprawi się automatycznie"
+	language_strings_first_time["GERMAN"]="Wenn Sie diese Nachricht nach einem automatischen Update sehen, haben Sie keine Angst! Das liegt vermutlich daran, dass ab Version 6.1 die Dateistruktur von wifimas geändert wurde. Es wird automatisch repariert"
+	language_strings_first_time["TURKISH"]="Otomatik bir güncellemeden sonra bu mesajı görüyorsanız, korkmayın! muhtemelen 6.1 sürümünden itibaren wifimas dosya yapısı değişmiştir. Otomatik olarak tamir edilecektir"
+	language_strings_first_time["ARABIC"]="إذا كنت ترى هذه الرسالة بعد التحديث التلقائي ، فلا تخف! ربما يرجع السبب في ذلك إلى أن wifimas له بنية ملفات مختلفة منذ الإصدار 6.1. سيتم إصلاحه تلقائيًا "
+	language_strings_first_time["CHINESE"]="如果您在自动更新后看到此消息，请不要害怕！这可能是因为 wifimas 从 6.1 版本开始有不同的文件结构。会自动修复"
 
 	declare -gA language_strings_exiting
 	language_strings_exiting["ENGLISH"]="Exiting wifimas script v${wifimas_version} - See you soon! :)"
-	language_strings_exiting["SPANISH"]="Saliendo de wifimas script v${airgeddon_version} - Nos vemos pronto! :)"
-	language_strings_exiting["FRENCH"]="Fermeture du script wifimas v${airgeddon_version} - A bientôt! :)"
-	language_strings_exiting["CATALAN"]="Sortint de wifimas script v${airgeddon_version} - Ens veiem aviat! :)"
-	language_strings_exiting["PORTUGUESE"]="Saindo do script wifimas v${airgeddon_version} - Até breve! :)"
-	language_strings_exiting["RUSSIAN"]="Выход из скрипта wifimas v${airgeddon_version} - До встречи! :)"
-	language_strings_exiting["GREEK"]="Κλείσιμο του wifimas v${airgeddon_version} - Αντίο :)"
-	language_strings_exiting["ITALIAN"]="Uscendo dallo script wifimas v${airgeddon_version} - A presto! :)"
-	language_strings_exiting["POLISH"]="Wyjście z skryptu wifimas v${airgeddon_version} - Do zobaczenia wkrótce! :)"
-	language_strings_exiting["GERMAN"]="Sie verlassen wifimas v${airgeddon_version} - Bis bald! :)"
-	language_strings_exiting["TURKISH"]="wifimas yazılımından çıkış yapılıyor v${airgeddon_version} - Yakında görüşürüz! :)"
-	language_strings_exiting["ARABIC"]="الخروج من البرنامج wifimas v${airgeddon_version}- نراكم قريبًا! :)"
-	language_strings_exiting["CHINESE"]="退出 wifimas 脚本 v${airgeddon_version} - 待会见！ :)"
+	language_strings_exiting["SPANISH"]="Saliendo de wifimas script v${wifimas_version} - Nos vemos pronto! :)"
+	language_strings_exiting["FRENCH"]="Fermeture du script wifimas v${wifimas_version} - A bientôt! :)"
+	language_strings_exiting["CATALAN"]="Sortint de wifimas script v${wifimas_version} - Ens veiem aviat! :)"
+	language_strings_exiting["PORTUGUESE"]="Saindo do script wifimas v${wifimas_version} - Até breve! :)"
+	language_strings_exiting["RUSSIAN"]="Выход из скрипта wifimas v${wifimas_version} - До встречи! :)"
+	language_strings_exiting["GREEK"]="Κλείσιμο του wifimas v${wifimas_version} - Αντίο :)"
+	language_strings_exiting["ITALIAN"]="Uscendo dallo script wifimas v${wifimas_version} - A presto! :)"
+	language_strings_exiting["POLISH"]="Wyjście z skryptu wifimas v${wifimas_version} - Do zobaczenia wkrótce! :)"
+	language_strings_exiting["GERMAN"]="Sie verlassen wifimas v${wifimas_version} - Bis bald! :)"
+	language_strings_exiting["TURKISH"]="wifimas yazılımından çıkış yapılıyor v${wifimas_version} - Yakında görüşürüz! :)"
+	language_strings_exiting["ARABIC"]="الخروج من البرنامج wifimas v${wifimas_version}- نراكم قريبًا! :)"
+	language_strings_exiting["CHINESE"]="退出 wifimas 脚本 v${wifimas_version} - 待会见！ :)"
 
 	declare -gA language_strings_key_to_continue
 	language_strings_key_to_continue["ENGLISH"]="Press [Enter] key to continue..."
@@ -635,13 +635,13 @@ function option_toggle() {
 	fi
 
 	case "${option_var_name}" in
-		"AIRGEDDON_BASIC_COLORS")
+		"wifimas_BASIC_COLORS")
 			remap_colors
 		;;
-		"AIRGEDDON_EXTENDED_COLORS")
+		"wifimas_EXTENDED_COLORS")
 			initialize_extended_colorized_output
 		;;
-		"AIRGEDDON_5GHZ_ENABLED")
+		"wifimas_5GHZ_ENABLED")
 			phy_interface=$(physical_interface_finder "${interface}")
 			check_interface_supported_bands "${phy_interface}" "main_wifi_interface"
 			secondary_phy_interface=$(physical_interface_finder "${secondary_wifi_interface}")
@@ -676,7 +676,7 @@ function set_permanent_language() {
 #Print the current line of where this was called and the function's name. Applies to some (which are useful) functions
 function debug_print() {
 
-	if "${AIRGEDDON_DEBUG_MODE:-true}"; then
+	if "${wifimas_DEBUG_MODE:-true}"; then
 
 		declare excluded_functions=(
 							"airmon_fix"
@@ -760,7 +760,7 @@ function special_text_missed_optional_tool() {
 	declare -a required_tools=("${!3}")
 
 	allowed_menu_option=1
-	if ! "${AIRGEDDON_DEVELOPMENT_MODE:-false}"; then
+	if ! "${wifimas_DEVELOPMENT_MODE:-false}"; then
 		tools_needed="${optionaltool_needed[${1}]}"
 		for item in "${required_tools[@]}"; do
 			if [ "${optional_tools[${item}]}" -eq 0 ]; then
@@ -1482,7 +1482,7 @@ function get_5ghz_band_info_from_phy_interface() {
 	debug_print
 
 	if iw phy "${1}" channels 2> /dev/null | grep -Ei "5180(\.0)? MHz" > /dev/null; then
-		if "${AIRGEDDON_5GHZ_ENABLED:-true}"; then
+		if "${wifimas_5GHZ_ENABLED:-true}"; then
 			return 0
 		else
 			return 2
@@ -1857,62 +1857,62 @@ function option_menu() {
 	print_simple_separator
 	language_strings "${language}" 78
 	print_simple_separator
-	if "${AIRGEDDON_AUTO_UPDATE:-true}"; then
+	if "${wifimas_AUTO_UPDATE:-true}"; then
 		language_strings "${language}" 455
 	else
 		language_strings "${language}" 449
 	fi
-	if "${AIRGEDDON_SKIP_INTRO:-true}"; then
+	if "${wifimas_SKIP_INTRO:-true}"; then
 		language_strings "${language}" 565
 	else
 		language_strings "${language}" 566
 	fi
-	if "${AIRGEDDON_BASIC_COLORS:-true}"; then
+	if "${wifimas_BASIC_COLORS:-true}"; then
 		language_strings "${language}" 557
 	else
 		language_strings "${language}" 556
 	fi
-	if "${AIRGEDDON_EXTENDED_COLORS:-true}"; then
+	if "${wifimas_EXTENDED_COLORS:-true}"; then
 		language_strings "${language}" 456
 	else
 		language_strings "${language}" 450
 	fi
-	if "${AIRGEDDON_AUTO_CHANGE_LANGUAGE:-true}"; then
+	if "${wifimas_AUTO_CHANGE_LANGUAGE:-true}"; then
 		language_strings "${language}" 468
 	else
 		language_strings "${language}" 467
 	fi
-	if "${AIRGEDDON_SILENT_CHECKS:-true}"; then
+	if "${wifimas_SILENT_CHECKS:-true}"; then
 		language_strings "${language}" 573
 	else
 		language_strings "${language}" 574
 	fi
-	if "${AIRGEDDON_PRINT_HINTS:-true}"; then
+	if "${wifimas_PRINT_HINTS:-true}"; then
 		language_strings "${language}" 584
 	else
 		language_strings "${language}" 585
 	fi
-	if "${AIRGEDDON_5GHZ_ENABLED:-true}"; then
+	if "${wifimas_5GHZ_ENABLED:-true}"; then
 		language_strings "${language}" 592
 	else
 		language_strings "${language}" 593
 	fi
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		language_strings "${language}" 616
 	else
 		language_strings "${language}" 617
 	fi
-	if [ "${AIRGEDDON_MDK_VERSION}" = "mdk3" ]; then
+	if [ "${wifimas_MDK_VERSION}" = "mdk3" ]; then
 		language_strings "${language}" 638
 	else
 		language_strings "${language}" 637
 	fi
-	if "${AIRGEDDON_PLUGINS_ENABLED:-true}"; then
+	if "${wifimas_PLUGINS_ENABLED:-true}"; then
 		language_strings "${language}" 651
 	else
 		language_strings "${language}" 652
 	fi
-	if "${AIRGEDDON_FORCE_NETWORK_MANAGER_KILLING:-true}"; then
+	if "${wifimas_FORCE_NETWORK_MANAGER_KILLING:-true}"; then
 		language_strings "${language}" 688
 	else
 		language_strings "${language}" 689
@@ -1929,10 +1929,10 @@ function option_menu() {
 			language_menu
 		;;
 		2)
-			if "${AIRGEDDON_AUTO_UPDATE:-true}"; then
+			if "${wifimas_AUTO_UPDATE:-true}"; then
 				ask_yesno 457 "no"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_AUTO_UPDATE"; then
+					if option_toggle "wifimas_AUTO_UPDATE"; then
 						echo
 						language_strings "${language}" 461 "blue"
 					else
@@ -1945,7 +1945,7 @@ function option_menu() {
 				language_strings "${language}" 459 "yellow"
 				ask_yesno 458 "no"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_AUTO_UPDATE"; then
+					if option_toggle "wifimas_AUTO_UPDATE"; then
 						echo
 						language_strings "${language}" 460 "blue"
 					else
@@ -1957,10 +1957,10 @@ function option_menu() {
 			fi
 		;;
 		3)
-			if "${AIRGEDDON_SKIP_INTRO:-true}"; then
+			if "${wifimas_SKIP_INTRO:-true}"; then
 				ask_yesno 569 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_SKIP_INTRO"; then
+					if option_toggle "wifimas_SKIP_INTRO"; then
 						echo
 						language_strings "${language}" 571 "blue"
 					else
@@ -1972,7 +1972,7 @@ function option_menu() {
 			else
 				ask_yesno 570 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_SKIP_INTRO"; then
+					if option_toggle "wifimas_SKIP_INTRO"; then
 						echo
 						language_strings "${language}" 572 "blue"
 					else
@@ -1984,10 +1984,10 @@ function option_menu() {
 			fi
 		;;
 		4)
-			if "${AIRGEDDON_BASIC_COLORS:-true}"; then
+			if "${wifimas_BASIC_COLORS:-true}"; then
 				ask_yesno 558 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_BASIC_COLORS"; then
+					if option_toggle "wifimas_BASIC_COLORS"; then
 						echo
 						language_strings "${language}" 560 "blue"
 					else
@@ -1999,7 +1999,7 @@ function option_menu() {
 			else
 				ask_yesno 559 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_BASIC_COLORS"; then
+					if option_toggle "wifimas_BASIC_COLORS"; then
 						echo
 						language_strings "${language}" 561 "blue"
 					else
@@ -2016,10 +2016,10 @@ function option_menu() {
 				language_strings "${language}" 464 "yellow"
 			fi
 
-			if "${AIRGEDDON_EXTENDED_COLORS:-true}"; then
+			if "${wifimas_EXTENDED_COLORS:-true}"; then
 				ask_yesno 462 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_EXTENDED_COLORS"; then
+					if option_toggle "wifimas_EXTENDED_COLORS"; then
 						echo
 						language_strings "${language}" 466 "blue"
 					else
@@ -2031,10 +2031,10 @@ function option_menu() {
 			else
 				ask_yesno 463 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_EXTENDED_COLORS"; then
+					if option_toggle "wifimas_EXTENDED_COLORS"; then
 						echo
 						language_strings "${language}" 465 "blue"
-						if ! "${AIRGEDDON_BASIC_COLORS:-true}"; then
+						if ! "${wifimas_BASIC_COLORS:-true}"; then
 							echo
 							language_strings "${language}" 562 "yellow"
 						fi
@@ -2047,10 +2047,10 @@ function option_menu() {
 			fi
 		;;
 		6)
-			if "${AIRGEDDON_AUTO_CHANGE_LANGUAGE:-true}"; then
+			if "${wifimas_AUTO_CHANGE_LANGUAGE:-true}"; then
 				ask_yesno 469 "no"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_AUTO_CHANGE_LANGUAGE"; then
+					if option_toggle "wifimas_AUTO_CHANGE_LANGUAGE"; then
 						echo
 						language_strings "${language}" 473 "blue"
 					else
@@ -2064,7 +2064,7 @@ function option_menu() {
 				language_strings "${language}" 471 "yellow"
 				ask_yesno 470 "no"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_AUTO_CHANGE_LANGUAGE"; then
+					if option_toggle "wifimas_AUTO_CHANGE_LANGUAGE"; then
 						echo
 						language_strings "${language}" 472 "blue"
 					else
@@ -2076,10 +2076,10 @@ function option_menu() {
 			fi
 		;;
 		7)
-			if "${AIRGEDDON_SILENT_CHECKS:-true}"; then
+			if "${wifimas_SILENT_CHECKS:-true}"; then
 				ask_yesno 577 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_SILENT_CHECKS"; then
+					if option_toggle "wifimas_SILENT_CHECKS"; then
 						echo
 						language_strings "${language}" 579 "blue"
 					else
@@ -2091,7 +2091,7 @@ function option_menu() {
 			else
 				ask_yesno 578 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_SILENT_CHECKS"; then
+					if option_toggle "wifimas_SILENT_CHECKS"; then
 						echo
 						language_strings "${language}" 580 "blue"
 					else
@@ -2103,10 +2103,10 @@ function option_menu() {
 			fi
 		;;
 		8)
-			if "${AIRGEDDON_PRINT_HINTS:-true}"; then
+			if "${wifimas_PRINT_HINTS:-true}"; then
 				ask_yesno 586 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_PRINT_HINTS"; then
+					if option_toggle "wifimas_PRINT_HINTS"; then
 						echo
 						language_strings "${language}" 588 "blue"
 					else
@@ -2118,7 +2118,7 @@ function option_menu() {
 			else
 				ask_yesno 587 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_PRINT_HINTS"; then
+					if option_toggle "wifimas_PRINT_HINTS"; then
 						echo
 						language_strings "${language}" 589 "blue"
 					else
@@ -2130,10 +2130,10 @@ function option_menu() {
 			fi
 		;;
 		9)
-			if "${AIRGEDDON_5GHZ_ENABLED:-true}"; then
+			if "${wifimas_5GHZ_ENABLED:-true}"; then
 				ask_yesno 596 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_5GHZ_ENABLED"; then
+					if option_toggle "wifimas_5GHZ_ENABLED"; then
 						echo
 						language_strings "${language}" 598 "blue"
 					else
@@ -2145,7 +2145,7 @@ function option_menu() {
 			else
 				ask_yesno 597 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_5GHZ_ENABLED"; then
+					if option_toggle "wifimas_5GHZ_ENABLED"; then
 						echo
 						language_strings "${language}" 599 "blue"
 					else
@@ -2157,10 +2157,10 @@ function option_menu() {
 			fi
 		;;
 		10)
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 				ask_yesno 657 "yes"
 				if [ "${yesno}" = "y" ]; then
-					sed -ri "s:(AIRGEDDON_WINDOWS_HANDLING)=(xterm):\1=tmux:" "${rc_path}" 2> /dev/null
+					sed -ri "s:(wifimas_WINDOWS_HANDLING)=(xterm):\1=tmux:" "${rc_path}" 2> /dev/null
 					echo
 					language_strings "${language}" 620 "yellow"
 					language_strings "${language}" 115 "read"
@@ -2168,7 +2168,7 @@ function option_menu() {
 			else
 				ask_yesno 658 "yes"
 				if [ "${yesno}" = "y" ]; then
-					sed -ri "s:(AIRGEDDON_WINDOWS_HANDLING)=(tmux):\1=xterm:" "${rc_path}" 2> /dev/null
+					sed -ri "s:(wifimas_WINDOWS_HANDLING)=(tmux):\1=xterm:" "${rc_path}" 2> /dev/null
 					echo
 					language_strings "${language}" 620 "yellow"
 					language_strings "${language}" 115 "read"
@@ -2186,14 +2186,14 @@ function option_menu() {
 			fi
 		;;
 		12)
-			if "${AIRGEDDON_PLUGINS_ENABLED:-true}"; then
+			if "${wifimas_PLUGINS_ENABLED:-true}"; then
 				ask_yesno 655 "yes"
 			else
 				ask_yesno 656 "yes"
 			fi
 
 			if [ "${yesno}" = "y" ]; then
-				if option_toggle "AIRGEDDON_PLUGINS_ENABLED" "required_reboot"; then
+				if option_toggle "wifimas_PLUGINS_ENABLED" "required_reboot"; then
 					echo
 					language_strings "${language}" 620 "yellow"
 				else
@@ -2204,10 +2204,10 @@ function option_menu() {
 			fi
 		;;
 		13)
-			if "${AIRGEDDON_FORCE_NETWORK_MANAGER_KILLING:-true}"; then
+			if "${wifimas_FORCE_NETWORK_MANAGER_KILLING:-true}"; then
 				ask_yesno 692 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_FORCE_NETWORK_MANAGER_KILLING"; then
+					if option_toggle "wifimas_FORCE_NETWORK_MANAGER_KILLING"; then
 						echo
 						language_strings "${language}" 694 "blue"
 					else
@@ -2219,7 +2219,7 @@ function option_menu() {
 			else
 				ask_yesno 693 "yes"
 				if [ "${yesno}" = "y" ]; then
-					if option_toggle "AIRGEDDON_FORCE_NETWORK_MANAGER_KILLING"; then
+					if option_toggle "wifimas_FORCE_NETWORK_MANAGER_KILLING"; then
 						echo
 						language_strings "${language}" 695 "blue"
 					else
@@ -2238,10 +2238,10 @@ function option_menu() {
 					echo
 					language_strings "${language}" 480 "red"
 				else
-					if "${AIRGEDDON_AUTO_CHANGE_LANGUAGE:-true}"; then
+					if "${wifimas_AUTO_CHANGE_LANGUAGE:-true}"; then
 						echo
 						language_strings "${language}" 479 "yellow"
-						option_toggle "AIRGEDDON_AUTO_CHANGE_LANGUAGE"
+						option_toggle "wifimas_AUTO_CHANGE_LANGUAGE"
 					fi
 
 					if set_permanent_language; then
@@ -3202,7 +3202,7 @@ function decloak_check() {
 	done
 
 	kill "${processiddecloak}" &> /dev/null
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		tmux kill-window -t "${session_name}:Decloaking"
 	fi
 }
@@ -3226,7 +3226,7 @@ function handshake_capture_check() {
 	done
 
 	kill "${processidcapture}" &> /dev/null
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		tmux kill-window -t "${session_name}:Capturing Handshake"
 	fi
 }
@@ -3770,7 +3770,7 @@ function kill_wep_windows() {
 		kill "${item}" &> /dev/null
 	done
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		kill_tmux_windows
 	fi
 }
@@ -3803,7 +3803,7 @@ function set_wep_key_script() {
 	cat >&8 <<-EOF
 		#!/usr/bin/env bash
 
-		AIRGEDDON_WINDOWS_HANDLING="${AIRGEDDON_WINDOWS_HANDLING}"
+		wifimas_WINDOWS_HANDLING="${wifimas_WINDOWS_HANDLING}"
 
 		#Function to launch window using xterm/tmux
 		function manage_output() {
@@ -3814,7 +3814,7 @@ function set_wep_key_script() {
 			window_name="\${3}"
 			command_tail=" > /dev/null 2>&1 &"
 
-			case "\${AIRGEDDON_WINDOWS_HANDLING}" in
+			case "\${wifimas_WINDOWS_HANDLING}" in
 				"tmux")
 					local tmux_color
 					tmux_color=""
@@ -3900,7 +3900,7 @@ function set_wep_key_script() {
 		}
 	EOF
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		cat >&8 <<-EOF
 			#Function to kill tmux windows using window name
 			function kill_tmux_windows() {
@@ -3945,7 +3945,7 @@ function set_wep_key_script() {
 		kill_wep_script_windows
 	EOF
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		cat >&8 <<-EOF
 			kill_tmux_windows "WEP Key Decrypted"
 		EOF
@@ -3975,7 +3975,7 @@ function set_wep_key_script() {
 			manage_output "-hold -bg \"#000000\" -fg \"#FFFFFF\" -geometry \${window_position} -T \"WEP Key Decrypted\"" "clear;\${wep_key_cmd}" "WEP Key Decrypted" "active"
 	EOF
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		cat >&8 <<-EOF
 			wep_key_window_pid="\$!"
 			{
@@ -4001,7 +4001,7 @@ function set_wep_script() {
 	cat >&6 <<-EOF
 		#!/usr/bin/env bash
 
-		AIRGEDDON_WINDOWS_HANDLING="${AIRGEDDON_WINDOWS_HANDLING}"
+		wifimas_WINDOWS_HANDLING="${wifimas_WINDOWS_HANDLING}"
 		global_process_pid=""
 
 		#Function to launch window using xterm/tmux
@@ -4013,7 +4013,7 @@ function set_wep_script() {
 			window_name="\${3}"
 			command_tail=" > /dev/null 2>&1 &"
 
-			case "\${AIRGEDDON_WINDOWS_HANDLING}" in
+			case "\${wifimas_WINDOWS_HANDLING}" in
 				"tmux")
 					local tmux_color
 					tmux_color=""
@@ -4075,7 +4075,7 @@ function set_wep_script() {
 		#Function to kill tmux windows using window name
 		function kill_tmux_window_by_name() {
 
-			if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				tmux kill-window -t "${session_name}:\${1}" 2> /dev/null
 			fi
 		}
@@ -4098,7 +4098,7 @@ function set_wep_script() {
 							wep_chopchop_launched=1
 							manage_output "+j -bg \"#000000\" -fg \"#8B4513\" -geometry ${g5_left7} -T \"Chop-Chop Attack (1/3)\"" "yes | aireplay-ng -4 -b ${bssid} -h ${current_mac} ${interface} | tee -a \"${tmpdir}${wepdir}chopchop_output.txt\"" "Chop-Chop Attack (1/3)"
 
-							if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+							if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 								get_tmux_process_id "aireplay-ng -4 -b ${bssid} -h ${current_mac} ${interface}"
 								wep_chopchop_phase1_pid="\${global_process_pid}"
 								global_process_pid=""
@@ -4114,7 +4114,7 @@ function set_wep_script() {
 					kill_tmux_window_by_name "Chop-Chop Attack (1/3)"
 					manage_output "+j -bg \"#000000\" -fg \"#8B4513\" -geometry ${g5_left7} -T \"Chop-Chop Attack (2/3)\"" "packetforge-ng -0 -a ${bssid} -h ${current_mac} -k 255.255.255.255 -l 255.255.255.255 -y \"${tmpdir}${wepdir}replay_dec-\"*.xor -w \"${tmpdir}${wepdir}chopchop.cap\"" "Chop-Chop Attack (2/3)"
 
-					if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+					if [ "\${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 						wep_chopchop_phase2_pid="\$!"
 					fi
 
@@ -4127,7 +4127,7 @@ function set_wep_script() {
 						kill_tmux_window_by_name "Chop-Chop Attack (2/3)"
 						manage_output "-hold -bg \"#000000\" -fg \"#8B4513\" -geometry ${g5_left7} -T \"Chop-Chop Attack (3/3)\"" "yes | aireplay-ng -2 -F -r \"${tmpdir}${wepdir}chopchop.cap\" ${interface}" "Chop-Chop Attack (3/3)"
 
-						if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+						if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 							get_tmux_process_id "aireplay-ng -2 -F -r \"${tmpdir}${wepdir}chopchop.cap\" ${interface}"
 							wep_script_processes+=("\${global_process_pid}")
 							global_process_pid=""
@@ -4155,7 +4155,7 @@ function set_wep_script() {
 							wep_fragmentation_launched=1
 							manage_output "+j -bg \"#000000\" -fg \"#0000FF\" -geometry ${g5_left6} -T \"Fragmentation Attack (1/3)\"" "yes | aireplay-ng -5 -b ${bssid} -h ${current_mac} ${interface} | tee -a \"${tmpdir}${wepdir}fragmentation_output.txt\"" "Fragmentation Attack (1/3)"
 
-							if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+							if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 								get_tmux_process_id "aireplay-ng -5 -b ${bssid} -h ${current_mac} ${interface}"
 								wep_fragmentation_phase1_pid="\${global_process_pid}"
 								global_process_pid=""
@@ -4171,7 +4171,7 @@ function set_wep_script() {
 					kill_tmux_window_by_name "Fragmentation Attack (1/3)"
 					manage_output "+j -bg \"#000000\" -fg \"#0000FF\" -geometry ${g5_left6} -T \"Fragmentation Attack (2/3)\"" "packetforge-ng -0 -a ${bssid} -h ${current_mac} -k 255.255.255.255 -l 255.255.255.255 -y \"${tmpdir}${wepdir}fragment-\"*.xor -w \"${tmpdir}${wepdir}fragmentation.cap\"" "Fragmentation Attack (2/3)"
 
-					if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+					if [ "\${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 						wep_fragmentation_phase2_pid="\$!"
 					fi
 
@@ -4184,7 +4184,7 @@ function set_wep_script() {
 						kill_tmux_window_by_name "Fragmentation Attack (2/3)"
 						manage_output "-hold -bg \"#000000\" -fg \"#0000FF\" -geometry ${g5_left6} -T \"Fragmentation Attack (3/3)\"" "yes | aireplay-ng -2 -F -r \"${tmpdir}${wepdir}fragmentation.cap\" ${interface}" "Fragmentation Attack (3/3)"
 
-						if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+						if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 							get_tmux_process_id "aireplay-ng -2 -F -r \"${tmpdir}${wepdir}fragmentation.cap\" ${interface}"
 							wep_script_processes+=("\${global_process_pid}")
 							global_process_pid=""
@@ -4217,7 +4217,7 @@ function set_wep_script() {
 		wep_script_processes=()
 
 		manage_output "+j -bg \"#000000\" -fg \"#FFFFFF\" -geometry ${g5_topright_window} -T \"Capturing WEP Data\"" "airodump-ng -d ${bssid} -c ${channel} --encrypt WEP -w \"${tmpdir}${wep_data}\" ${interface}" "Capturing WEP Data" "active"
-		if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+		if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 			get_tmux_process_id "airodump-ng -d ${bssid} -c ${channel} --encrypt WEP -w \"${tmpdir}${wep_data}\" ${interface}"
 			wep_script_capture_pid="\${global_process_pid}"
 			global_process_pid=""
@@ -4243,7 +4243,7 @@ function set_wep_script() {
 
 			if [[ -n "\${wep_capture_pid_alive}" ]] && [[ -z "\${wep_fakeauth_pid_alive}" ]]; then
 				manage_output "+j -bg \"#000000\" -fg \"#00FF00\" -geometry ${g5_left1} -T \"Fake Auth\"" "aireplay-ng -1 3 -o 1 -q 10 -a ${bssid} -h ${current_mac} ${interface}" "Fake Auth"
-				if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+				if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 					get_tmux_process_id "aireplay-ng -1 3 -o 1 -q 10 -a ${bssid} -h ${current_mac} ${interface}"
 					wep_fakeauth_pid="\${global_process_pid}"
 					global_process_pid=""
@@ -4260,7 +4260,7 @@ function set_wep_script() {
 				wep_to_be_launched_only_once=1
 
 				manage_output "+j -bg \"#000000\" -fg \"#FFFF00\" -geometry ${g5_left2} -T \"Arp Broadcast Injection\"" "aireplay-ng -2 -p 0841 -F -c ${broadcast_mac} -b ${bssid} -h ${current_mac} ${interface}" "Arp Broadcast Injection"
-				if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+				if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 					get_tmux_process_id "aireplay-ng -2 -p 0841 -F -c ${broadcast_mac} -b ${bssid} -h ${current_mac} ${interface}"
 					wep_script_processes+=("\${global_process_pid}")
 					global_process_pid=""
@@ -4269,7 +4269,7 @@ function set_wep_script() {
 				fi
 
 				manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g5_left3} -T \"Arp Request Replay\"" "aireplay-ng -3 -x 1024 -g 1000000 -b ${bssid} -h ${current_mac} -i ${interface} ${interface}" "Arp Request Replay"
-				if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+				if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 					get_tmux_process_id "aireplay-ng -3 -x 1024 -g 1000000 -b ${bssid} -h ${current_mac} -i ${interface} ${interface}"
 					wep_script_processes+=("\${global_process_pid}")
 					global_process_pid=""
@@ -4278,7 +4278,7 @@ function set_wep_script() {
 				fi
 
 				manage_output "+j -bg \"#000000\" -fg \"#FFC0CB\" -geometry ${g5_left4} -T \"Caffe Latte Attack\"" "aireplay-ng -6 -F -D -b ${bssid} -h ${current_mac} ${interface}" "Caffe Latte Attack"
-				if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+				if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 					get_tmux_process_id "aireplay-ng -6 -F -D -b ${bssid} -h ${current_mac} ${interface}"
 					wep_script_processes+=("\${global_process_pid}")
 					global_process_pid=""
@@ -4287,7 +4287,7 @@ function set_wep_script() {
 				fi
 
 				manage_output "+j -bg \"#000000\" -fg \"#D3D3D3\" -geometry ${g5_left5} -T \"Hirte Attack\"" "aireplay-ng -7 -F -D -b ${bssid} -h ${current_mac} ${interface}" "Hirte Attack"
-				if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+				if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 					get_tmux_process_id "aireplay-ng -7 -F -D -b ${bssid} -h ${current_mac} ${interface}"
 					wep_script_processes+=("\${global_process_pid}")
 					global_process_pid=""
@@ -4314,7 +4314,7 @@ function set_wep_script() {
 				wep_aircrack_launched=1
 
 				manage_output "+j -bg \"#000000\" -fg \"#FFFF00\" -geometry ${g5_bottomright_window} -T \"Decrypting WEP Key\"" "aircrack-ng \"${tmpdir}${wep_data}\"*.cap -l \"${tmpdir}${wepdir}wepkey.txt\"" "Decrypting WEP Key" "active"
-				if [ "\${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+				if [ "\${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 					get_tmux_process_id "aircrack-ng \"${tmpdir}${wep_data}\".*cap -l \"${tmpdir}${wepdir}wepkey.txt\""
 					wep_aircrack_pid="\${global_process_pid}"
 					global_process_pid=""
@@ -4517,7 +4517,7 @@ function launch_dos_pursuit_mode_attack() {
 			interface_pursuit_mode_scan="${secondary_wifi_interface}"
 			interface_pursuit_mode_deauth="${interface}"
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_topleft_window} -T \"${1} (DoS Pursuit mode)\"" "${mdk_command} ${interface_pursuit_mode_deauth} d -b ${tmpdir}bl.txt -c ${channel}" "${1} (DoS Pursuit mode)"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "${mdk_command} ${interface_pursuit_mode_deauth} d -b ${tmpdir}bl.txt -c ${channel}"
 				dos_pursuit_mode_attack_pid="${global_process_pid}"
 				global_process_pid=""
@@ -4529,7 +4529,7 @@ function launch_dos_pursuit_mode_attack() {
 			interface_pursuit_mode_scan="${secondary_wifi_interface}"
 			interface_pursuit_mode_deauth="${interface}"
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_topleft_window} -T \"${1} (DoS Pursuit mode)\"" "aireplay-ng --deauth 0 -a ${bssid} --ignore-negative-one ${interface_pursuit_mode_deauth}" "${1} (DoS Pursuit mode)"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "aireplay-ng --deauth 0 -a ${bssid} --ignore-negative-one ${interface_pursuit_mode_deauth}"
 				dos_pursuit_mode_attack_pid="${global_process_pid}"
 				global_process_pid=""
@@ -4540,7 +4540,7 @@ function launch_dos_pursuit_mode_attack() {
 			interface_pursuit_mode_scan="${secondary_wifi_interface}"
 			interface_pursuit_mode_deauth="${interface}"
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_topleft_window} -T \"${1} (DoS Pursuit mode)\"" "${mdk_command} ${interface_pursuit_mode_deauth} a -a ${bssid} -m" "${1} (DoS Pursuit mode)"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "${mdk_command} ${interface_pursuit_mode_deauth} a -a ${bssid} -m"
 				dos_pursuit_mode_attack_pid="${global_process_pid}"
 				global_process_pid=""
@@ -4551,7 +4551,7 @@ function launch_dos_pursuit_mode_attack() {
 			interface_pursuit_mode_scan="${secondary_wifi_interface}"
 			interface_pursuit_mode_deauth="${interface}"
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_topleft_window} -T \"${1} (DoS Pursuit mode)\"" "${mdk_command} ${interface_pursuit_mode_deauth} b -n ${essid} -c ${channel} -s 1000 -h" "${1} (DoS Pursuit mode)"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "${mdk_command} ${interface_pursuit_mode_deauth} b -n ${essid} -c ${channel} -s 1000 -h"
 				dos_pursuit_mode_attack_pid="${global_process_pid}"
 				global_process_pid=""
@@ -4562,7 +4562,7 @@ function launch_dos_pursuit_mode_attack() {
 			interface_pursuit_mode_scan="${secondary_wifi_interface}"
 			interface_pursuit_mode_deauth="${interface}"
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_topleft_window} -T \"${1} (DoS Pursuit mode)\"" "${mdk_command} ${interface_pursuit_mode_deauth} w -e ${essid} -c ${channel}" "${1} (DoS Pursuit mode)"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "${mdk_command} ${interface_pursuit_mode_deauth} w -e ${essid} -c ${channel}"
 				dos_pursuit_mode_attack_pid="${global_process_pid}"
 				global_process_pid=""
@@ -4573,7 +4573,7 @@ function launch_dos_pursuit_mode_attack() {
 			interface_pursuit_mode_scan="${secondary_wifi_interface}"
 			interface_pursuit_mode_deauth="${interface}"
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_topleft_window} -T \"${1} (DoS Pursuit mode)\"" "${mdk_command} ${interface_pursuit_mode_deauth} m -t ${bssid} -w 1 -n 1024 -s 1024" "${1} (DoS Pursuit mode)"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "${mdk_command} ${interface_pursuit_mode_deauth} m -t ${bssid} -w 1 -n 1024 -s 1024"
 				dos_pursuit_mode_attack_pid="${global_process_pid}"
 				global_process_pid=""
@@ -4584,7 +4584,7 @@ function launch_dos_pursuit_mode_attack() {
 			interface_pursuit_mode_scan="${secondary_wifi_interface}"
 			interface_pursuit_mode_deauth="${iface_monitor_et_deauth}"
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${deauth_scr_window_position} -T \"Deauth (DoS Pursuit mode)\"" "${mdk_command} ${interface_pursuit_mode_deauth} d -b ${tmpdir}\"bl.txt\" -c ${channel}" "Deauth (DoS Pursuit mode)"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "${mdk_command} ${interface_pursuit_mode_deauth} d -b ${tmpdir}\"bl.txt\" -c ${channel}"
 				dos_pursuit_mode_attack_pid="${global_process_pid}"
 				global_process_pid=""
@@ -4596,7 +4596,7 @@ function launch_dos_pursuit_mode_attack() {
 			iw "${interface_pursuit_mode_deauth}" set channel "${channel}" > /dev/null 2>&1
 			dos_delay=3
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${deauth_scr_window_position} -T \"Deauth (DoS Pursuit mode)\"" "aireplay-ng --deauth 0 -a ${bssid} --ignore-negative-one ${interface_pursuit_mode_deauth}" "Deauth (DoS Pursuit mode)"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "aireplay-ng --deauth 0 -a ${bssid} --ignore-negative-one ${interface_pursuit_mode_deauth}"
 				dos_pursuit_mode_attack_pid="${global_process_pid}"
 				global_process_pid=""
@@ -4607,7 +4607,7 @@ function launch_dos_pursuit_mode_attack() {
 			interface_pursuit_mode_scan="${secondary_wifi_interface}"
 			interface_pursuit_mode_deauth="${iface_monitor_et_deauth}"
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${deauth_scr_window_position} -T \"Deauth (DoS Pursuit mode)\"" "${mdk_command} ${interface_pursuit_mode_deauth} a -a ${bssid} -m" "Deauth (DoS Pursuit mode)"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "${mdk_command} ${interface_pursuit_mode_deauth} a -a ${bssid} -m"
 				dos_pursuit_mode_attack_pid="${global_process_pid}"
 				global_process_pid=""
@@ -4615,7 +4615,7 @@ function launch_dos_pursuit_mode_attack() {
 		;;
 	esac
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		dos_pursuit_mode_attack_pid=$!
 	fi
 	dos_pursuit_mode_pids+=("${dos_pursuit_mode_attack_pid}")
@@ -4966,12 +4966,12 @@ function mdk_version_toggle() {
 
 	debug_print
 
-	if [ "${AIRGEDDON_MDK_VERSION}" = "mdk3" ]; then
-		sed -ri "s:(AIRGEDDON_MDK_VERSION)=(mdk3):\1=mdk4:" "${rc_path}" 2> /dev/null
-		AIRGEDDON_MDK_VERSION="mdk4"
+	if [ "${wifimas_MDK_VERSION}" = "mdk3" ]; then
+		sed -ri "s:(wifimas_MDK_VERSION)=(mdk3):\1=mdk4:" "${rc_path}" 2> /dev/null
+		wifimas_MDK_VERSION="mdk4"
 	else
-		sed -ri "s:(AIRGEDDON_MDK_VERSION)=(mdk4):\1=mdk3:" "${rc_path}" 2> /dev/null
-		AIRGEDDON_MDK_VERSION="mdk3"
+		sed -ri "s:(wifimas_MDK_VERSION)=(mdk4):\1=mdk3:" "${rc_path}" 2> /dev/null
+		wifimas_MDK_VERSION="mdk3"
 	fi
 
 	set_mdk_version
@@ -4982,7 +4982,7 @@ function set_mdk_version() {
 
 	debug_print
 
-	if [ "${AIRGEDDON_MDK_VERSION}" = "mdk3" ]; then
+	if [ "${wifimas_MDK_VERSION}" = "mdk3" ]; then
 		if ! hash mdk3 2> /dev/null; then
 			echo
 			language_strings "${language}" 636 "red"
@@ -5434,68 +5434,68 @@ function print_options() {
 
 	debug_print
 
-	if "${AIRGEDDON_AUTO_UPDATE:-true}"; then
+	if "${wifimas_AUTO_UPDATE:-true}"; then
 		language_strings "${language}" 451 "blue"
 	else
 		language_strings "${language}" 452 "blue"
 	fi
 
-	if "${AIRGEDDON_SKIP_INTRO:-true}"; then
+	if "${wifimas_SKIP_INTRO:-true}"; then
 		language_strings "${language}" 567 "blue"
 	else
 		language_strings "${language}" 568 "blue"
 	fi
 
-	if "${AIRGEDDON_BASIC_COLORS:-true}"; then
+	if "${wifimas_BASIC_COLORS:-true}"; then
 		language_strings "${language}" 563 "blue"
 	else
 		language_strings "${language}" 564 "blue"
 	fi
 
-	if "${AIRGEDDON_EXTENDED_COLORS:-true}"; then
+	if "${wifimas_EXTENDED_COLORS:-true}"; then
 		language_strings "${language}" 453 "blue"
 	else
 		language_strings "${language}" 454 "blue"
 	fi
 
-	if "${AIRGEDDON_AUTO_CHANGE_LANGUAGE:-true}"; then
+	if "${wifimas_AUTO_CHANGE_LANGUAGE:-true}"; then
 		language_strings "${language}" 474 "blue"
 	else
 		language_strings "${language}" 475 "blue"
 	fi
 
-	if "${AIRGEDDON_SILENT_CHECKS:-true}"; then
+	if "${wifimas_SILENT_CHECKS:-true}"; then
 		language_strings "${language}" 575 "blue"
 	else
 		language_strings "${language}" 576 "blue"
 	fi
 
-	if "${AIRGEDDON_PRINT_HINTS:-true}"; then
+	if "${wifimas_PRINT_HINTS:-true}"; then
 		language_strings "${language}" 582 "blue"
 	else
 		language_strings "${language}" 583 "blue"
 	fi
 
-	if "${AIRGEDDON_5GHZ_ENABLED:-true}"; then
+	if "${wifimas_5GHZ_ENABLED:-true}"; then
 		language_strings "${language}" 594 "blue"
 	else
 		language_strings "${language}" 595 "blue"
 	fi
 
-	if "${AIRGEDDON_FORCE_NETWORK_MANAGER_KILLING:-true}"; then
+	if "${wifimas_FORCE_NETWORK_MANAGER_KILLING:-true}"; then
 		language_strings "${language}" 690 "blue"
 	else
 		language_strings "${language}" 691 "blue"
 	fi
 
 	reboot_required_text=""
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
-		if grep -q "AIRGEDDON_WINDOWS_HANDLING=tmux" "${rc_path}" 2> /dev/null; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
+		if grep -q "wifimas_WINDOWS_HANDLING=tmux" "${rc_path}" 2> /dev/null; then
 			reboot_required_text="${reboot_required[${language}]}"
 		fi
 		language_strings "${language}" 618 "blue"
 	else
-		if grep -q "AIRGEDDON_WINDOWS_HANDLING=xterm" "${rc_path}" 2> /dev/null; then
+		if grep -q "wifimas_WINDOWS_HANDLING=xterm" "${rc_path}" 2> /dev/null; then
 			reboot_required_text="${reboot_required[${language}]}"
 		fi
 		language_strings "${language}" 619 "blue"
@@ -5504,13 +5504,13 @@ function print_options() {
 	language_strings "${language}" 641 "blue"
 
 	reboot_required_text=""
-	if "${AIRGEDDON_PLUGINS_ENABLED:-true}"; then
-		if grep -q "AIRGEDDON_PLUGINS_ENABLED=false" "${rc_path}" 2> /dev/null; then
+	if "${wifimas_PLUGINS_ENABLED:-true}"; then
+		if grep -q "wifimas_PLUGINS_ENABLED=false" "${rc_path}" 2> /dev/null; then
 			reboot_required_text="${reboot_required[${language}]}"
 		fi
 		language_strings "${language}" 653 "blue"
 	else
-		if grep -q "AIRGEDDON_PLUGINS_ENABLED=true" "${rc_path}" 2> /dev/null; then
+		if grep -q "wifimas_PLUGINS_ENABLED=true" "${rc_path}" 2> /dev/null; then
 			reboot_required_text="${reboot_required[${language}]}"
 		fi
 		language_strings "${language}" 654 "blue"
@@ -5883,13 +5883,13 @@ function dependencies_modifications() {
 
 	debug_print
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		essential_tools_names=("${essential_tools_names[@]/xterm/tmux}")
 		possible_package_names[${essential_tools_names[5]}]="tmux"
 		unset 'possible_package_names[xterm]'
 	fi
 
-	if [ "${AIRGEDDON_MDK_VERSION}" = "mdk3" ]; then
+	if [ "${wifimas_MDK_VERSION}" = "mdk3" ]; then
 		optional_tools_names=("${optional_tools_names[@]/mdk4/mdk3}")
 		possible_package_names[${optional_tools_names[3]}]="mdk3"
 		unset 'possible_package_names[mdk4]'
@@ -6028,7 +6028,7 @@ function clean_env_vars() {
 
 	debug_print
 
-	unset AIRGEDDON_AUTO_UPDATE AIRGEDDON_SKIP_INTRO AIRGEDDON_BASIC_COLORS AIRGEDDON_EXTENDED_COLORS AIRGEDDON_AUTO_CHANGE_LANGUAGE AIRGEDDON_SILENT_CHECKS AIRGEDDON_PRINT_HINTS AIRGEDDON_5GHZ_ENABLED AIRGEDDON_FORCE_IPTABLES AIRGEDDON_FORCE_NETWORK_MANAGER_KILLING AIRGEDDON_MDK_VERSION AIRGEDDON_PLUGINS_ENABLED AIRGEDDON_DEVELOPMENT_MODE AIRGEDDON_DEBUG_MODE AIRGEDDON_WINDOWS_HANDLING
+	unset wifimas_AUTO_UPDATE wifimas_SKIP_INTRO wifimas_BASIC_COLORS wifimas_EXTENDED_COLORS wifimas_AUTO_CHANGE_LANGUAGE wifimas_SILENT_CHECKS wifimas_PRINT_HINTS wifimas_5GHZ_ENABLED wifimas_FORCE_IPTABLES wifimas_FORCE_NETWORK_MANAGER_KILLING wifimas_MDK_VERSION wifimas_PLUGINS_ENABLED wifimas_DEVELOPMENT_MODE wifimas_DEBUG_MODE wifimas_WINDOWS_HANDLING
 }
 
 #Control the status of the routing taking into consideration instances orchestration
@@ -6043,8 +6043,8 @@ function control_routing_status() {
 	local et_still_running=0
 
 	if [ "${1}" = "start" ]; then
-		readarray -t AIRGEDDON_PIDS 2> /dev/null < <(cat < "${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
-		for item in "${AIRGEDDON_PIDS[@]}"; do
+		readarray -t wifimas_PIDS 2> /dev/null < <(cat < "${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
+		for item in "${wifimas_PIDS[@]}"; do
 			[[ "${item}" =~ ^(et)?([0-9]+)(rs[0-1])?$ ]] && etset="${BASH_REMATCH[1]}" && agpid="${BASH_REMATCH[2]}"
 			if [ -z "${saved_routing_status_found}" ]; then
 				[[ "${item}" =~ ^(et)?([0-9]+)(rs[0-1])?$ ]] && saved_routing_status_found="${BASH_REMATCH[3]}"
@@ -6060,8 +6060,8 @@ function control_routing_status() {
 			sed -ri "s:^(et${agpid_to_use})$:\1rs${original_routing_status}:" "${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null
 		fi
 	else
-		readarray -t AIRGEDDON_PIDS 2> /dev/null < <(cat < "${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
-		for item in "${AIRGEDDON_PIDS[@]}"; do
+		readarray -t wifimas_PIDS 2> /dev/null < <(cat < "${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
+		for item in "${wifimas_PIDS[@]}"; do
 			[[ "${item}" =~ ^(et)?([0-9]+)(rs[0-1])?$ ]] && etset="${BASH_REMATCH[1]}" && agpid="${BASH_REMATCH[2]}"
 			if [ -z "${saved_routing_status_found}" ]; then
 				[[ "${item}" =~ ^(et)?([0-9]+)(rs[0-1])?$ ]] && saved_routing_status_found="${BASH_REMATCH[3]}"
@@ -6090,7 +6090,7 @@ function clean_tmpfiles() {
 
 	if [ "${1}" = "exit_script" ]; then
 		rm -rf "${tmpdir}" > /dev/null 2>&1
-		if is_last_airgeddon_instance; then
+		if is_last_wifimas_instance; then
 			delete_instance_orchestrator_file
 		fi
 	else
@@ -6160,7 +6160,7 @@ function clean_routing_rules() {
 	control_routing_status "end"
 	clean_initialize_iptables_nftables "end"
 
-	if is_last_airgeddon_instance && [[ -n "${system_tmpdir}${routing_tmp_file}" ]]; then
+	if is_last_wifimas_instance && [[ -n "${system_tmpdir}${routing_tmp_file}" ]]; then
 		restore_iptables_nftables
 		rm -rf "${system_tmpdir}${routing_tmp_file}" > /dev/null 2>&1
 	fi
@@ -6198,18 +6198,18 @@ function prepare_iptables_nftables() {
 	clean_this_instance_iptables_nftables
 
 	if [ "${iptables_nftables}" -eq 1 ]; then
-		"${iptables_cmd}" add table ip filter_"${airgeddon_instance_name}"
-		"${iptables_cmd}" add chain ip filter_"${airgeddon_instance_name}" forward_"${airgeddon_instance_name}" '{type filter hook forward priority 0; policy accept;}'
-		"${iptables_cmd}" add chain ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" '{type filter hook input priority 0;}'
-		"${iptables_cmd}" add table ip nat_"${airgeddon_instance_name}"
-		"${iptables_cmd}" add chain ip nat_"${airgeddon_instance_name}" prerouting_"${airgeddon_instance_name}" '{type nat hook prerouting priority -100;}'
-		"${iptables_cmd}" add chain ip nat_"${airgeddon_instance_name}" postrouting_"${airgeddon_instance_name}" '{type nat hook postrouting priority 100;}'
+		"${iptables_cmd}" add table ip filter_"${wifimas_instance_name}"
+		"${iptables_cmd}" add chain ip filter_"${wifimas_instance_name}" forward_"${wifimas_instance_name}" '{type filter hook forward priority 0; policy accept;}'
+		"${iptables_cmd}" add chain ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" '{type filter hook input priority 0;}'
+		"${iptables_cmd}" add table ip nat_"${wifimas_instance_name}"
+		"${iptables_cmd}" add chain ip nat_"${wifimas_instance_name}" prerouting_"${wifimas_instance_name}" '{type nat hook prerouting priority -100;}'
+		"${iptables_cmd}" add chain ip nat_"${wifimas_instance_name}" postrouting_"${wifimas_instance_name}" '{type nat hook postrouting priority 100;}'
 	else
 		"${iptables_cmd}" -P FORWARD ACCEPT
-		"${iptables_cmd}" -t filter -N input_"${airgeddon_instance_name}"
-		"${iptables_cmd}" -A INPUT -j input_"${airgeddon_instance_name}"
-		"${iptables_cmd}" -t filter -N forward_"${airgeddon_instance_name}"
-		"${iptables_cmd}" -A FORWARD -j forward_"${airgeddon_instance_name}"
+		"${iptables_cmd}" -t filter -N input_"${wifimas_instance_name}"
+		"${iptables_cmd}" -A INPUT -j input_"${wifimas_instance_name}"
+		"${iptables_cmd}" -t filter -N forward_"${wifimas_instance_name}"
+		"${iptables_cmd}" -A FORWARD -j forward_"${wifimas_instance_name}"
 	fi
 }
 
@@ -6219,15 +6219,15 @@ function clean_this_instance_iptables_nftables() {
 	debug_print
 
 	if [ "${iptables_nftables}" -eq 1 ]; then
-		"${iptables_cmd}" delete table filter_"${airgeddon_instance_name}" 2> /dev/null
-		"${iptables_cmd}" delete table nat_"${airgeddon_instance_name}" 2> /dev/null
+		"${iptables_cmd}" delete table filter_"${wifimas_instance_name}" 2> /dev/null
+		"${iptables_cmd}" delete table nat_"${wifimas_instance_name}" 2> /dev/null
 	else
-		"${iptables_cmd}" -D INPUT -j input_"${airgeddon_instance_name}" 2> /dev/null
-		"${iptables_cmd}" -D FORWARD -j forward_"${airgeddon_instance_name}" 2> /dev/null
-		"${iptables_cmd}" -F input_"${airgeddon_instance_name}" 2> /dev/null
-		"${iptables_cmd}" -F forward_"${airgeddon_instance_name}" 2> /dev/null
-		"${iptables_cmd}" -X input_"${airgeddon_instance_name}" 2> /dev/null
-		"${iptables_cmd}" -X forward_"${airgeddon_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -D INPUT -j input_"${wifimas_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -D FORWARD -j forward_"${wifimas_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -F input_"${wifimas_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -F forward_"${wifimas_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -X input_"${wifimas_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -X forward_"${wifimas_instance_name}" 2> /dev/null
 	fi
 }
 
@@ -6247,12 +6247,12 @@ function clean_all_iptables_nftables() {
 		"${iptables_cmd}" -t mangle -X 2> /dev/null
 		"${iptables_cmd}" -t raw -X 2> /dev/null
 		"${iptables_cmd}" -t security -X 2> /dev/null
-		"${iptables_cmd}" -D INPUT -j input_"${airgeddon_instance_name}" 2> /dev/null
-		"${iptables_cmd}" -D FORWARD -j forward_"${airgeddon_instance_name}" 2> /dev/null
-		"${iptables_cmd}" -F input_"${airgeddon_instance_name}" 2> /dev/null
-		"${iptables_cmd}" -F forward_"${airgeddon_instance_name}" 2> /dev/null
-		"${iptables_cmd}" -X input_"${airgeddon_instance_name}" 2> /dev/null
-		"${iptables_cmd}" -X forward_"${airgeddon_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -D INPUT -j input_"${wifimas_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -D FORWARD -j forward_"${wifimas_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -F input_"${wifimas_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -F forward_"${wifimas_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -X input_"${wifimas_instance_name}" 2> /dev/null
+		"${iptables_cmd}" -X forward_"${wifimas_instance_name}" 2> /dev/null
 		"${iptables_cmd}" -X 2> /dev/null
 		"${iptables_cmd}" -t nat -X 2> /dev/null
 	fi
@@ -6264,12 +6264,12 @@ function clean_initialize_iptables_nftables() {
 	debug_print
 
 	if [ "${1}" = "start" ]; then
-		if [[ "${clean_all_iptables_nftables}" -eq 1 ]] && is_first_routing_modifier_airgeddon_instance; then
+		if [[ "${clean_all_iptables_nftables}" -eq 1 ]] && is_first_routing_modifier_wifimas_instance; then
 			clean_all_iptables_nftables
 		fi
 		prepare_iptables_nftables
 	else
-		if is_last_airgeddon_instance; then
+		if is_last_wifimas_instance; then
 			clean_all_iptables_nftables
 		else
 			clean_this_instance_iptables_nftables
@@ -6422,7 +6422,7 @@ function print_hint() {
 		;;
 	esac
 
-	if "${AIRGEDDON_PRINT_HINTS:-true}"; then
+	if "${wifimas_PRINT_HINTS:-true}"; then
 		print_simple_separator
 		language_strings "${language}" "${strtoprint}" "hint"
 	fi
@@ -6437,7 +6437,7 @@ function initialize_instance_settings() {
 	agpid_to_use="${BASHPID}"
 
 	instance_setter
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		if hash tmux 2> /dev/null; then
 			local current_tmux_display_name
 			current_tmux_display_name=$(tmux display-message -p '#W')
@@ -6452,13 +6452,13 @@ function initialize_instance_settings() {
 	fi
 }
 
-#Detect number of the alive airgeddon instances and set the next one if apply
+#Detect number of the alive wifimas instances and set the next one if apply
 function instance_setter() {
 
 	debug_print
 
 	local create_dir=0
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		if hash tmux 2> /dev/null; then
 			local current_tmux_display_name
 			current_tmux_display_name=$(tmux display-message -p '#W')
@@ -6472,21 +6472,21 @@ function instance_setter() {
 
 	if [ "${create_dir}" -eq 1 ]; then
 		local dir_number="1"
-		airgeddon_instance_name="ag${dir_number}"
-		local airgeddon_instance_dir="${airgeddon_instance_name}/"
+		wifimas_instance_name="ag${dir_number}"
+		local wifimas_instance_dir="${wifimas_instance_name}/"
 
-		if [ -d "${system_tmpdir}${airgeddon_instance_dir}" ]; then
+		if [ -d "${system_tmpdir}${wifimas_instance_dir}" ]; then
 			while true; do
 				dir_number=$((dir_number + 1))
-				airgeddon_instance_name="ag${dir_number}"
-				airgeddon_instance_dir="${airgeddon_instance_name}/"
-				if [ ! -d "${system_tmpdir}${airgeddon_instance_dir}" ]; then
+				wifimas_instance_name="ag${dir_number}"
+				wifimas_instance_dir="${wifimas_instance_name}/"
+				if [ ! -d "${system_tmpdir}${wifimas_instance_dir}" ]; then
 					break
 				fi
 			done
 		fi
 
-		tmpdir="${system_tmpdir}${airgeddon_instance_dir}"
+		tmpdir="${system_tmpdir}${wifimas_instance_dir}"
 		mkdir -p "${tmpdir}" > /dev/null 2>&1
 	fi
 }
@@ -6499,19 +6499,19 @@ function create_instance_orchestrator_file() {
 	if [ ! -f "${system_tmpdir}${ag_orchestrator_file}" ]; then
 		touch "${system_tmpdir}${ag_orchestrator_file}" > /dev/null 2>&1
 	else
-		local airgeddon_pid_alive=0
+		local wifimas_pid_alive=0
 		local agpid=""
 
-		readarray -t AIRGEDDON_PIDS 2> /dev/null < <(cat < "${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
-		for item in "${AIRGEDDON_PIDS[@]}"; do
+		readarray -t wifimas_PIDS 2> /dev/null < <(cat < "${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
+		for item in "${wifimas_PIDS[@]}"; do
 			[[ "${item}" =~ ^(et)?([0-9]+)(rs[0-1])?$ ]] && agpid="${BASH_REMATCH[2]}"
 			if ps -p "${agpid}" > /dev/null 2>&1; then
-				airgeddon_pid_alive=1
+				wifimas_pid_alive=1
 				break
 			fi
 		done
 
-		if [ "${airgeddon_pid_alive}" -eq 0 ]; then
+		if [ "${wifimas_pid_alive}" -eq 0 ]; then
 			rm -rf "${system_tmpdir}${ag_orchestrator_file}" > /dev/null 2>&1
 			touch "${system_tmpdir}${ag_orchestrator_file}" > /dev/null 2>&1
 		fi
@@ -6542,33 +6542,33 @@ function register_instance_pid() {
 	fi
 }
 
-#Detect and return the number of airgeddon running instances
+#Detect and return the number of wifimas running instances
 function detect_running_instances() {
 
 	debug_print
 
-	airgeddon_running_instances_counter=1
+	wifimas_running_instances_counter=1
 
-	readarray -t AIRGEDDON_PIDS 2> /dev/null < <(cat < "${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
-	for item in "${AIRGEDDON_PIDS[@]}"; do
+	readarray -t wifimas_PIDS 2> /dev/null < <(cat < "${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
+	for item in "${wifimas_PIDS[@]}"; do
 		[[ "${item}" =~ ^(et)?([0-9]+)(rs[0-1])?$ ]] && agpid="${BASH_REMATCH[2]}"
 		if [[ "${agpid}" != "${BASHPID}" ]] && ps -p "${agpid}" > /dev/null 2>&1; then
-			airgeddon_running_instances_counter=$((airgeddon_running_instances_counter + 1))
+			wifimas_running_instances_counter=$((wifimas_running_instances_counter + 1))
 		fi
 	done
 
-	return "${airgeddon_running_instances_counter}"
+	return "${wifimas_running_instances_counter}"
 }
 
 #Check if this instance is the first one modifying routing state
-function is_first_routing_modifier_airgeddon_instance() {
+function is_first_routing_modifier_wifimas_instance() {
 
 	debug_print
 
 	local agpid=""
 
-	readarray -t AIRGEDDON_PIDS 2> /dev/null < <(cat <"${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
-	for item in "${AIRGEDDON_PIDS[@]}"; do
+	readarray -t wifimas_PIDS 2> /dev/null < <(cat <"${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
+	for item in "${wifimas_PIDS[@]}"; do
 		[[ "${item}" =~ ^(et)?([0-9]+)rs[0-1]$ ]] && agpid="${BASH_REMATCH[2]}"
 
 		if [ "${agpid}" = "${BASHPID}" ]; then
@@ -6580,15 +6580,15 @@ function is_first_routing_modifier_airgeddon_instance() {
 	return 1
 }
 
-#Check if this instance is the last airgeddon instance running
-function is_last_airgeddon_instance() {
+#Check if this instance is the last wifimas instance running
+function is_last_wifimas_instance() {
 
 	debug_print
 
 	local agpid=""
 
-	readarray -t AIRGEDDON_PIDS 2> /dev/null < <(cat <"${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
-	for item in "${AIRGEDDON_PIDS[@]}"; do
+	readarray -t wifimas_PIDS 2> /dev/null < <(cat <"${system_tmpdir}${ag_orchestrator_file}" 2> /dev/null)
+	for item in "${wifimas_PIDS[@]}"; do
 		[[ "${item}" =~ ^(et)?([0-9]+)(rs[0-1])?$ ]] && agpid="${BASH_REMATCH[2]}"
 
 		if [[ "${agpid}" != "${agpid_to_use}" ]] && ps -p "${agpid}" > /dev/null 2>&1; then
@@ -6599,7 +6599,7 @@ function is_last_airgeddon_instance() {
 	return 0
 }
 
-#airgeddon main menu
+#wifimas main menu
 function main_menu() {
 
 	debug_print
@@ -8040,7 +8040,7 @@ function check_essid_in_mdk_decloak_log() {
 	debug_print
 
 	local regexp
-	if [ "${AIRGEDDON_MDK_VERSION}" = "mdk3" ]; then
+	if [ "${wifimas_MDK_VERSION}" = "mdk3" ]; then
 		if ! grep -q "End of SSID list reached" "${tmpdir}decloak.log"; then
 			regexp='SSID:[[:blank:]]\"([^\"]+)\"'
 			[[ $(grep "${bssid}" "${tmpdir}decloak.log") =~ ${regexp} ]] && essid="${BASH_REMATCH[1]}"
@@ -10178,7 +10178,7 @@ function launch_fake_ap() {
 
 	debug_print
 
-	if "${AIRGEDDON_FORCE_NETWORK_MANAGER_KILLING:-true}"; then
+	if "${wifimas_FORCE_NETWORK_MANAGER_KILLING:-true}"; then
 		${airmon} check kill > /dev/null 2>&1
 		nm_processes_killed=1
 	else
@@ -10225,7 +10225,7 @@ function launch_fake_ap() {
 	fi
 
 	manage_output "-hold -bg \"#000000\" -fg \"#00FF00\" -geometry ${hostapd_scr_window_position} -T \"AP\"" "${command}${log_command}" "AP"
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		et_processes+=($!)
 		if [ "${dos_pursuit_mode}" -eq 1 ]; then
 			dos_pursuit_mode_ap_pid=$!
@@ -10402,54 +10402,54 @@ function set_std_internet_routing_rules() {
 
 	if [ "${et_mode}" = "et_captive_portal" ]; then
 		if [ "${iptables_nftables}" -eq 1 ]; then
-			"${iptables_cmd}" add rule ip nat_"${airgeddon_instance_name}" prerouting_"${airgeddon_instance_name}" iifname "${interface}" tcp dport "${www_port}" counter dnat to "${et_ip_router}:${www_port}"
-			"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" iifname "${interface}" tcp dport "${www_port}" counter accept
-			"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" iifname "${interface}" tcp dport "${https_port}" counter accept
-			"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" iifname "${interface}" udp dport "${dns_port}" counter accept
+			"${iptables_cmd}" add rule ip nat_"${wifimas_instance_name}" prerouting_"${wifimas_instance_name}" iifname "${interface}" tcp dport "${www_port}" counter dnat to "${et_ip_router}:${www_port}"
+			"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" iifname "${interface}" tcp dport "${www_port}" counter accept
+			"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" iifname "${interface}" tcp dport "${https_port}" counter accept
+			"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" iifname "${interface}" udp dport "${dns_port}" counter accept
 		else
 			"${iptables_cmd}" -t nat -A PREROUTING -p tcp -i "${interface}" --dport "${www_port}" -j DNAT --to-destination "${et_ip_router}:${www_port}"
-			"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -p tcp -i "${interface}" --destination-port "${www_port}" -j ACCEPT
-			"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -p tcp -i "${interface}" --destination-port "${https_port}" -j ACCEPT
-			"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -p udp -i "${interface}" --destination-port "${dns_port}" -j ACCEPT
+			"${iptables_cmd}" -A input_"${wifimas_instance_name}" -p tcp -i "${interface}" --destination-port "${www_port}" -j ACCEPT
+			"${iptables_cmd}" -A input_"${wifimas_instance_name}" -p tcp -i "${interface}" --destination-port "${https_port}" -j ACCEPT
+			"${iptables_cmd}" -A input_"${wifimas_instance_name}" -p udp -i "${interface}" --destination-port "${dns_port}" -j ACCEPT
 		fi
 	elif [ "${et_mode}" = "et_sniffing_sslstrip2" ]; then
 		if [ "${iptables_nftables}" -eq 1 ]; then
-			"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" iifname "${interface}" tcp dport "${bettercap_proxy_port}" counter accept
-			"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" iifname "${interface}" udp dport "${bettercap_dns_port}" counter accept
-			"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" iifname "${loopback_interface}" counter accept
+			"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" iifname "${interface}" tcp dport "${bettercap_proxy_port}" counter accept
+			"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" iifname "${interface}" udp dport "${bettercap_dns_port}" counter accept
+			"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" iifname "${loopback_interface}" counter accept
 		else
-			"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -p tcp -i "${interface}" --destination-port "${bettercap_proxy_port}" -j ACCEPT
-			"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -p udp -i "${interface}" --destination-port "${bettercap_dns_port}" -j ACCEPT
-			"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -i "${loopback_interface}" -j ACCEPT
+			"${iptables_cmd}" -A input_"${wifimas_instance_name}" -p tcp -i "${interface}" --destination-port "${bettercap_proxy_port}" -j ACCEPT
+			"${iptables_cmd}" -A input_"${wifimas_instance_name}" -p udp -i "${interface}" --destination-port "${bettercap_dns_port}" -j ACCEPT
+			"${iptables_cmd}" -A input_"${wifimas_instance_name}" -i "${loopback_interface}" -j ACCEPT
 		fi
 	elif [ "${et_mode}" = "et_sniffing_sslstrip2_beef" ]; then
 		if [ "${iptables_nftables}" -eq 1 ]; then
-			"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" iifname "${interface}" tcp dport "${bettercap_proxy_port}" counter accept
-			"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" iifname "${interface}" udp dport "${bettercap_dns_port}" counter accept
-			"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" iifname "${loopback_interface}" counter accept
-			"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" iifname "${interface}" tcp dport "${beef_port}" counter accept
+			"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" iifname "${interface}" tcp dport "${bettercap_proxy_port}" counter accept
+			"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" iifname "${interface}" udp dport "${bettercap_dns_port}" counter accept
+			"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" iifname "${loopback_interface}" counter accept
+			"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" iifname "${interface}" tcp dport "${beef_port}" counter accept
 		else
-			"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -p tcp -i "${interface}" --destination-port "${bettercap_proxy_port}" -j ACCEPT
-			"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -p udp -i "${interface}" --destination-port "${bettercap_dns_port}" -j ACCEPT
-			"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -i "${loopback_interface}" -j ACCEPT
-			"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -p tcp -i "${interface}" --destination-port "${beef_port}" -j ACCEPT
+			"${iptables_cmd}" -A input_"${wifimas_instance_name}" -p tcp -i "${interface}" --destination-port "${bettercap_proxy_port}" -j ACCEPT
+			"${iptables_cmd}" -A input_"${wifimas_instance_name}" -p udp -i "${interface}" --destination-port "${bettercap_dns_port}" -j ACCEPT
+			"${iptables_cmd}" -A input_"${wifimas_instance_name}" -i "${loopback_interface}" -j ACCEPT
+			"${iptables_cmd}" -A input_"${wifimas_instance_name}" -p tcp -i "${interface}" --destination-port "${beef_port}" -j ACCEPT
 		fi
 	fi
 
 	if [ "${et_mode}" != "et_captive_portal" ]; then
 		if [ "${iptables_nftables}" -eq 1 ]; then
-			"${iptables_cmd}" add rule nat_"${airgeddon_instance_name}" postrouting_"${airgeddon_instance_name}" ip saddr "${et_ip_range}/${std_c_mask_cidr}" oifname "${internet_interface}" counter masquerade
+			"${iptables_cmd}" add rule nat_"${wifimas_instance_name}" postrouting_"${wifimas_instance_name}" ip saddr "${et_ip_range}/${std_c_mask_cidr}" oifname "${internet_interface}" counter masquerade
 		else
 			"${iptables_cmd}" -t nat -A POSTROUTING -s "${et_ip_range}/${std_c_mask}" -o "${internet_interface}" -j MASQUERADE
 		fi
 	fi
 
 	if [ "${iptables_nftables}" -eq 1 ]; then
-		"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" iifname "${interface}" ip daddr "${et_ip_router}/${ip_mask_cidr}" icmp type echo-request ct state new,related,established counter accept
-		"${iptables_cmd}" add rule ip filter_"${airgeddon_instance_name}" input_"${airgeddon_instance_name}" ip daddr "${et_ip_router}/${ip_mask_cidr}" counter drop
+		"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" iifname "${interface}" ip daddr "${et_ip_router}/${ip_mask_cidr}" icmp type echo-request ct state new,related,established counter accept
+		"${iptables_cmd}" add rule ip filter_"${wifimas_instance_name}" input_"${wifimas_instance_name}" ip daddr "${et_ip_router}/${ip_mask_cidr}" counter drop
 	else
-		"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -i "${interface}" -p icmp --icmp-type 8 -d "${et_ip_router}/${ip_mask}" -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
-		"${iptables_cmd}" -A input_"${airgeddon_instance_name}" -d "${et_ip_router}/${ip_mask}" -j DROP
+		"${iptables_cmd}" -A input_"${wifimas_instance_name}" -i "${interface}" -p icmp --icmp-type 8 -d "${et_ip_router}/${ip_mask}" -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+		"${iptables_cmd}" -A input_"${wifimas_instance_name}" -d "${et_ip_router}/${ip_mask}" -j DROP
 	fi
 	sleep 2
 }
@@ -10474,7 +10474,7 @@ function launch_dhcp_server() {
 
 	rm -rf "/var/run/${dhcpd_pid_file}" 2> /dev/null
 	manage_output "+j -bg \"#000000\" -fg \"#FFC0CB\" -geometry ${dchcpd_scr_window_position} -T \"DHCP\"" "dhcpd -d -cf \"${dhcp_path}\" ${interface} 2>&1 | tee -a ${tmpdir}clts.txt 2>&1" "DHCP"
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		et_processes+=($!)
 	else
 		get_tmux_process_id "dhcpd -d -cf \"${dhcp_path}\" ${interface}"
@@ -10531,7 +10531,7 @@ function exec_et_deauth() {
 		pid_control_pursuit_mode "${et_dos_attack}" &
 	else
 		manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${deauth_scr_window_position} -T \"Deauth\"" "${deauth_et_cmd}" "Deauth"
-		if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+		if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 			et_processes+=($!)
 		else
 			get_tmux_process_id "${deauth_et_cmd}"
@@ -11041,7 +11041,7 @@ function set_enterprise_control_script() {
 		}
 	EOF
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		cat >&7 <<-EOF
 			#Function to kill tmux windows using window name
 			function kill_tmux_windows() {
@@ -11181,7 +11181,7 @@ function set_enterprise_control_script() {
 				kill_enterprise_windows
 	EOF
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		cat >&7 <<-EOF
 				kill_tmux_windows "Control"
 		EOF
@@ -11279,7 +11279,7 @@ function set_et_control_script() {
 			last_password_msg="${blue_color}${et_misc_texts[${language},21]}${normal_color}"
 	EOF
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		cat >&7 <<-EOF
 			#Function to kill tmux windows using window name
 			function kill_tmux_windows() {
@@ -11363,7 +11363,7 @@ function set_et_control_script() {
 				kill_et_processes_control_script
 	EOF
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		cat >&7 <<-EOF
 				kill_tmux_windows "Control"
 		EOF
@@ -11509,7 +11509,7 @@ function launch_dns_blackhole() {
 	} >> "${tmpdir}${dnsmasq_file}"
 
 	manage_output "+j -bg \"#000000\" -fg \"#0000FF\" -geometry ${g4_middleright_window} -T \"DNS\"" "${optional_tools_names[11]} -C \"${tmpdir}${dnsmasq_file}\"" "DNS"
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		et_processes+=($!)
 	else
 		get_tmux_process_id "${optional_tools_names[11]} -C \"${tmpdir}${dnsmasq_file}\""
@@ -11525,7 +11525,7 @@ function launch_enterprise_control_window() {
 
 	recalculate_windows_sizes
 	manage_output "-hold -bg \"#000000\" -fg \"#FFFFFF\" -geometry ${g1_topright_window} -T \"Control\"" "bash \"${tmpdir}${control_enterprise_file}\"" "Control" "active"
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		enterprise_process_control_window=$!
 	else
 		get_tmux_process_id "bash \"${tmpdir}${control_enterprise_file}\""
@@ -11558,7 +11558,7 @@ function launch_et_control_window() {
 		;;
 	esac
 	manage_output "-hold -bg \"#000000\" -fg \"#FFFFFF\" -geometry ${control_scr_window_position} -T \"Control\"" "bash \"${tmpdir}${control_et_file}\"" "Control" "active"
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		et_process_control_window=$!
 	else
 		get_tmux_process_id "bash \"${tmpdir}${control_et_file}\""
@@ -11721,14 +11721,14 @@ function prepare_captive_portal_data() {
 			echo
 			language_strings "${language}" 714 "yellow"
 
-			captive_portal_brand="airgeddon_default"
+			captive_portal_brand="wifimas_default"
 			captive_portal_bg_color="#1b5e20"
 			captive_portal_button_color="#43a047"
 			captive_portal_shadow_color="#69f0ae"
 			captive_portal_logo=""
 		fi
 	else
-		captive_portal_brand="airgeddon_default"
+		captive_portal_brand="wifimas_default"
 		captive_portal_bg_color="#1b5e20"
 		captive_portal_button_color="#43a047"
 		captive_portal_shadow_color="#69f0ae"
@@ -11931,7 +11931,7 @@ function launch_webserver() {
 	recalculate_windows_sizes
 	lighttpd_window_position=${g4_bottomright_window}
 	manage_output "+j -bg \"#000000\" -fg \"#FFFF00\" -geometry ${lighttpd_window_position} -T \"Webserver\"" "lighttpd -D -f \"${tmpdir}${webserver_file}\"" "Webserver"
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		et_processes+=($!)
 	else
 		get_tmux_process_id "lighttpd -D -f \"${tmpdir}${webserver_file}\""
@@ -11957,7 +11957,7 @@ function launch_ettercap_sniffing() {
 	fi
 
 	manage_output "-hold -bg \"#000000\" -fg \"#FFFF00\" -geometry ${sniffing_scr_window_position} -T \"Sniffer\"" "${ettercap_cmd}" "Sniffer"
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		et_processes+=($!)
 	else
 		get_tmux_process_id "${ettercap_cmd}"
@@ -12002,7 +12002,7 @@ function set_beef_config() {
 
 	{
 	echo -e "beef:"
-	echo -e "    version: 'airgeddon integrated'"
+	echo -e "    version: 'wifimas integrated'"
 	echo -e "    debug: false"
 	echo -e "    client_debug: false"
 	echo -e "    crypto_default_value_length: 80"
@@ -12202,7 +12202,7 @@ function fix_beef_executable() {
 	rewrite_script_with_custom_beef "set" "${1}"
 }
 
-#Rewrite airgeddon script in a polymorphic way adding custom beef location to array to get persistence
+#Rewrite wifimas script in a polymorphic way adding custom beef location to array to get persistence
 function rewrite_script_with_custom_beef() {
 
 	debug_print
@@ -12245,7 +12245,7 @@ function launch_beef() {
 		rm -rf "${beef_path}${beef_file}" > /dev/null 2>&1
 		cp "${tmpdir}${beef_file}" "${beef_path}" > /dev/null 2>&1
 		manage_output "+j -bg \"#000000\" -fg \"#00FF00\" -geometry ${g4_middleright_window} -T \"BeEF\"" "cd ${beef_path} && ./beef -c \"${beef_file}\"" "BeEF"
-		if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+		if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 			cd "${beef_path}"
 			get_tmux_process_id "./beef -c \"${beef_file}\""
 			et_processes+=("${global_process_pid}")
@@ -12253,14 +12253,14 @@ function launch_beef() {
 		fi
 	else
 		manage_output "+j -bg \"#000000\" -fg \"#00FF00\" -geometry ${g4_middleright_window} -T \"BeEF\"" "${optional_tools_names[17]}" "BeEF"
-		if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+		if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 			get_tmux_process_id "{optional_tools_names[18]}"
 			et_processes+=("${global_process_pid}")
 			global_process_pid=""
 		fi
 	fi
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		et_processes+=($!)
 	fi
 
@@ -12312,7 +12312,7 @@ function launch_bettercap_sniffing() {
 	fi
 
 	manage_output "+j -bg \"#000000\" -fg \"#FFFF00\" -geometry ${sniffing_scr_window_position} -T \"${bettercap_window_title}\"" "${bettercap_cmd}" "${bettercap_window_title}"
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		local bettercap_cmd_clean_for_pid_finding
 		bettercap_cmd_clean_for_pid_finding=$(echo "${bettercap_cmd}" | sed 's/ |.*//')
 		get_tmux_process_id "${bettercap_cmd_clean_for_pid_finding}"
@@ -12492,7 +12492,7 @@ function kill_et_windows() {
 		kill "${et_process_control_window}" &> /dev/null
 	fi
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		kill_tmux_windows
 	fi
 }
@@ -12823,7 +12823,7 @@ function capture_handshake_evil_twin() {
 			echo "${bssid}" > "${tmpdir}bl.txt"
 			recalculate_windows_sizes
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_bottomleft_window} -T \"${mdk_command} amok attack\"" "${mdk_command} ${interface} d -b ${tmpdir}bl.txt -c ${channel}" "${mdk_command} amok attack"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "${mdk_command} ${interface} d -b ${tmpdir}bl.txt -c ${channel}"
 				processidattack="${global_process_pid}"
 				global_process_pid=""
@@ -12834,7 +12834,7 @@ function capture_handshake_evil_twin() {
 			${airmon} start "${interface}" "${channel}" > /dev/null 2>&1
 			recalculate_windows_sizes
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_bottomleft_window} -T \"aireplay deauth attack\"" "aireplay-ng --deauth 0 -a ${bssid} --ignore-negative-one ${interface}" "aireplay deauth attack"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "aireplay-ng --deauth 0 -a ${bssid} --ignore-negative-one ${interface}"
 				processidattack="${global_process_pid}"
 				global_process_pid=""
@@ -12844,7 +12844,7 @@ function capture_handshake_evil_twin() {
 		"Auth DoS")
 			recalculate_windows_sizes
 			manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_bottomleft_window} -T \"auth dos attack\"" "${mdk_command} ${interface} a -a ${bssid} -m" "auth dos attack"
-			if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+			if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 				get_tmux_process_id "${mdk_command} ${interface} a -a ${bssid} -m"
 				processidattack="${global_process_pid}"
 				global_process_pid=""
@@ -12853,7 +12853,7 @@ function capture_handshake_evil_twin() {
 		;;
 	esac
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		processidattack=$!
 		sleep "${sleeptimeattack}" && kill "${processidattack}" &> /dev/null
 	else
@@ -12948,7 +12948,7 @@ function exec_decloak_by_dictionary() {
 
 	local unbuffer
 	unbuffer=""
-	if [ "${AIRGEDDON_MDK_VERSION}" = "mdk3" ]; then
+	if [ "${wifimas_MDK_VERSION}" = "mdk3" ]; then
 		unbuffer="stdbuf -i0 -o0 -e0 "
 	fi
 
@@ -13477,7 +13477,7 @@ function dos_handshake_decloaking_menu() {
 				echo "${bssid}" > "${tmpdir}bl.txt"
 				recalculate_windows_sizes
 				manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_bottomleft_window} -T \"${mdk_command} amok attack\"" "${mdk_command} ${interface} d -b ${tmpdir}bl.txt -c ${channel}" "${mdk_command} amok attack"
-				if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+				if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 					get_tmux_process_id "${mdk_command} ${interface} d -b ${tmpdir}bl.txt -c ${channel}"
 					processidattack="${global_process_pid}"
 					global_process_pid=""
@@ -13503,7 +13503,7 @@ function dos_handshake_decloaking_menu() {
 				${airmon} start "${interface}" "${channel}" > /dev/null 2>&1
 				recalculate_windows_sizes
 				manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_bottomleft_window} -T \"aireplay deauth attack\"" "aireplay-ng --deauth 0 -a ${bssid} --ignore-negative-one ${interface}" "aireplay deauth attack"
-				if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+				if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 					get_tmux_process_id "aireplay-ng --deauth 0 -a ${bssid} --ignore-negative-one ${interface}"
 					processidattack="${global_process_pid}"
 					global_process_pid=""
@@ -13528,7 +13528,7 @@ function dos_handshake_decloaking_menu() {
 				fi
 				recalculate_windows_sizes
 				manage_output "+j -bg \"#000000\" -fg \"#FF0000\" -geometry ${g1_bottomleft_window} -T \"auth dos attack\"" "${mdk_command} ${interface} a -a ${bssid} -m" "auth dos attack"
-				if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+				if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 					get_tmux_process_id "${mdk_command} ${interface} a -a ${bssid} -m"
 					processidattack="${global_process_pid}"
 					global_process_pid=""
@@ -13554,7 +13554,7 @@ function launch_decloak_capture() {
 
 	debug_print
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		processidattack=$!
 		sleep "${sleeptimeattack}" && kill "${processidattack}" &> /dev/null
 	else
@@ -13582,7 +13582,7 @@ function launch_handshake_capture() {
 
 	debug_print
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		processidattack=$!
 		sleep "${sleeptimeattack}" && kill "${processidattack}" &> /dev/null
 	else
@@ -13647,7 +13647,7 @@ function decloak_window() {
 	rm -rf "${tmpdir}decloak"* > /dev/null 2>&1
 	recalculate_windows_sizes
 	manage_output "+j -bg \"#000000\" -fg \"#FFFFFF\" -geometry ${g1_topright_window} -T \"Decloaking\"" "airodump-ng -c ${channel} -d ${bssid} -w ${tmpdir}decloak ${interface}" "Decloaking" "active"
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		get_tmux_process_id "airodump-ng -c ${channel} -d ${bssid} -w ${tmpdir}decloak ${interface}"
 		processiddecloak="${global_process_pid}"
 		global_process_pid=""
@@ -13672,7 +13672,7 @@ function capture_handshake_window() {
 	rm -rf "${tmpdir}handshake"* > /dev/null 2>&1
 	recalculate_windows_sizes
 	manage_output "+j -bg \"#000000\" -fg \"#FFFFFF\" -geometry ${g1_topright_window} -T \"Capturing Handshake\"" "airodump-ng -c ${channel} -d ${bssid} -w ${tmpdir}handshake ${interface}" "Capturing Handshake" "active"
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		get_tmux_process_id "airodump-ng -c ${channel} -d ${bssid} -w ${tmpdir}handshake ${interface}"
 		processidcapture="${global_process_pid}"
 		global_process_pid=""
@@ -13799,17 +13799,17 @@ function explore_for_targets_option() {
 			;;
 			"WPA1")
 				#Only WPA including WPA/WPA2 in Mixed mode
-				#Not used yet in airgeddon
+				#Not used yet in wifimas
 				:
 			;;
 			"WPA2")
 				#Only WPA2 including WPA/WPA2 and WPA2/WPA3 in Mixed mode
-				#Not used yet in airgeddon
+				#Not used yet in wifimas
 				:
 			;;
 			"WPA3")
 				#Only WPA3 including WPA2/WPA3 in Mixed mode
-				#Not used yet in airgeddon
+				#Not used yet in wifimas
 				:
 			;;
 			"WPA")
@@ -13898,17 +13898,17 @@ function explore_for_targets_option() {
 					;;
 					"WPA1")
 						#Only WPA including WPA/WPA2 in Mixed mode
-						#Not used yet in airgeddon
+						#Not used yet in wifimas
 						echo -e "${exp_mac},${exp_channel},${exp_power},${exp_essid},${exp_enc},${exp_auth}" >> "${tmpdir}nws.txt"
 					;;
 					"WPA2")
 						#Only WPA2 including WPA/WPA2 and WPA2/WPA3 in Mixed mode
-						#Not used yet in airgeddon
+						#Not used yet in wifimas
 						echo -e "${exp_mac},${exp_channel},${exp_power},${exp_essid},${exp_enc},${exp_auth}" >> "${tmpdir}nws.txt"
 					;;
 					"WPA3")
 						#Only WPA3 including WPA2/WPA3 in Mixed mode
-						#Not used yet in airgeddon
+						#Not used yet in wifimas
 						echo -e "${exp_mac},${exp_channel},${exp_power},${exp_essid},${exp_enc},${exp_auth}" >> "${tmpdir}nws.txt"
 					;;
 					"WPA")
@@ -15043,7 +15043,7 @@ function exit_script_option() {
 	fi
 
 	echo
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		clean_env_vars
 		no_hardcore_exit=1
 		if ! kill_tmux_session "${session_name}" > /dev/null; then
@@ -15083,7 +15083,7 @@ function hardcore_exit() {
 		echo -e "${green_color} Ok\r${normal_color}"
 	fi
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		clean_env_vars
 		if ! kill_tmux_session "${session_name}"; then
 			exit ${exit_code}
@@ -15111,7 +15111,7 @@ function iptables_nftables_detection() {
 
 	debug_print
 
-	if ! "${AIRGEDDON_FORCE_IPTABLES:-false}"; then
+	if ! "${wifimas_FORCE_IPTABLES:-false}"; then
 		if hash nft 2> /dev/null; then
 			iptables_nftables=1
 		else
@@ -15368,7 +15368,7 @@ function set_script_paths() {
 
 	plugins_paths=(
 					"${scriptfolder}${plugins_dir}"
-					"${user_homedir}.airgeddon/${plugins_dir}"
+					"${user_homedir}.wifimas/${plugins_dir}"
 				)
 }
 
@@ -15467,7 +15467,7 @@ function update_options_config_file() {
 
 	case "${1}" in
 		"getdata")
-			readarray -t OPTION_VARS < <(grep "AIRGEDDON_" "${rc_path}" 2> /dev/null)
+			readarray -t OPTION_VARS < <(grep "wifimas_" "${rc_path}" 2> /dev/null)
 		;;
 		"writedata")
 			local option_name
@@ -15935,7 +15935,7 @@ function check_root_permissions() {
 	user=$(whoami)
 
 	if [ "${user}" = "root" ]; then
-		if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+		if ! "${wifimas_SILENT_CHECKS:-false}"; then
 			echo
 			language_strings "${language}" 484 "yellow"
 		fi
@@ -15969,7 +15969,7 @@ function check_compatibility() {
 
 	debug_print
 
-	if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+	if ! "${wifimas_SILENT_CHECKS:-false}"; then
 		echo
 		language_strings "${language}" 108 "blue"
 		language_strings "${language}" 115 "read"
@@ -15980,7 +15980,7 @@ function check_compatibility() {
 
 	essential_toolsok=1
 	for i in "${essential_tools_names[@]}"; do
-		if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+		if ! "${wifimas_SILENT_CHECKS:-false}"; then
 			echo -ne "${i}"
 			time_loop
 			if ! hash "${i}" 2> /dev/null; then
@@ -15998,19 +15998,19 @@ function check_compatibility() {
 		fi
 	done
 
-	if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+	if ! "${wifimas_SILENT_CHECKS:-false}"; then
 		echo
 		language_strings "${language}" 218 "blue"
 	fi
 
 	optional_toolsok=1
 	for i in "${!optional_tools[@]}"; do
-		if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+		if ! "${wifimas_SILENT_CHECKS:-false}"; then
 			echo -ne "${i}"
 			time_loop
 		fi
 		if ! hash "${i}" 2> /dev/null; then
-			if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+			if ! "${wifimas_SILENT_CHECKS:-false}"; then
 				echo -ne "${red_color} Error${normal_color}"
 				echo -ne " (${possible_package_names_text[${language}]} : ${possible_package_names[${i}]})"
 				echo -e "\r"
@@ -16020,20 +16020,20 @@ function check_compatibility() {
 			if [ "${i}" = "beef" ]; then
 				detect_fake_beef
 				if [ "${fake_beef_found}" -eq 1 ]; then
-					if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+					if ! "${wifimas_SILENT_CHECKS:-false}"; then
 						echo -ne "${red_color} Error${normal_color}"
 						echo -ne " (${possible_package_names_text[${language}]} : ${possible_package_names[${i}]})"
 						echo -e "\r"
 					fi
 					optional_toolsok=0
 				else
-					if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+					if ! "${wifimas_SILENT_CHECKS:-false}"; then
 						echo -e "${green_color} Ok\r${normal_color}"
 					fi
 					optional_tools[${i}]=1
 				fi
 			else
-				if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+				if ! "${wifimas_SILENT_CHECKS:-false}"; then
 					echo -e "${green_color} Ok\r${normal_color}"
 				fi
 				optional_tools[${i}]=1
@@ -16042,15 +16042,15 @@ function check_compatibility() {
 	done
 
 	update_toolsok=1
-	if "${AIRGEDDON_AUTO_UPDATE:-true}"; then
+	if "${wifimas_AUTO_UPDATE:-true}"; then
 
-		if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+		if ! "${wifimas_SILENT_CHECKS:-false}"; then
 			echo
 			language_strings "${language}" 226 "blue"
 		fi
 
 		for i in "${update_tools[@]}"; do
-			if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+			if ! "${wifimas_SILENT_CHECKS:-false}"; then
 				echo -ne "${i}"
 				time_loop
 				if ! hash "${i}" 2> /dev/null; then
@@ -16073,7 +16073,7 @@ function check_compatibility() {
 		echo
 		language_strings "${language}" 111 "red"
 		echo
-		if "${AIRGEDDON_SILENT_CHECKS:-true}"; then
+		if "${wifimas_SILENT_CHECKS:-true}"; then
 			language_strings "${language}" 581 "blue"
 			echo
 		fi
@@ -16083,7 +16083,7 @@ function check_compatibility() {
 
 	compatible=1
 
-	if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+	if ! "${wifimas_SILENT_CHECKS:-false}"; then
 		if [ "${optional_toolsok}" -eq 0 ]; then
 			echo
 			language_strings "${language}" 219 "yellow"
@@ -16108,7 +16108,7 @@ function check_bash_version() {
 
 	bashversion="${BASH_VERSINFO[0]}.${BASH_VERSINFO[1]}"
 	if compare_floats_greater_or_equal "${bashversion}" ${minimum_bash_version_required}; then
-		if ! "${AIRGEDDON_SILENT_CHECKS:-false}"; then
+		if ! "${wifimas_SILENT_CHECKS:-false}"; then
 			echo
 			language_strings "${language}" 221 "yellow"
 		fi
@@ -16125,7 +16125,7 @@ function check_update_tools() {
 
 	debug_print
 
-	if "${AIRGEDDON_AUTO_UPDATE:-true}"; then
+	if "${wifimas_AUTO_UPDATE:-true}"; then
 		if [ "${is_docker}" -eq 1 ]; then
 			echo
 			language_strings "${language}" 422 "blue"
@@ -16474,21 +16474,21 @@ function recalculate_windows_sizes() {
 function env_vars_initialization() {
 
 	ordered_options_env_vars=(
-									"AIRGEDDON_AUTO_UPDATE" #0
-									"AIRGEDDON_SKIP_INTRO" #1
-									"AIRGEDDON_BASIC_COLORS" #2
-									"AIRGEDDON_EXTENDED_COLORS" #3
-									"AIRGEDDON_AUTO_CHANGE_LANGUAGE" #4
-									"AIRGEDDON_SILENT_CHECKS" #5
-									"AIRGEDDON_PRINT_HINTS" #6
-									"AIRGEDDON_5GHZ_ENABLED" #7
-									"AIRGEDDON_FORCE_IPTABLES" #8
-									"AIRGEDDON_FORCE_NETWORK_MANAGER_KILLING" #9
-									"AIRGEDDON_MDK_VERSION" #10
-									"AIRGEDDON_PLUGINS_ENABLED" #11
-									"AIRGEDDON_DEVELOPMENT_MODE" #12
-									"AIRGEDDON_DEBUG_MODE" #13
-									"AIRGEDDON_WINDOWS_HANDLING" #14
+									"wifimas_AUTO_UPDATE" #0
+									"wifimas_SKIP_INTRO" #1
+									"wifimas_BASIC_COLORS" #2
+									"wifimas_EXTENDED_COLORS" #3
+									"wifimas_AUTO_CHANGE_LANGUAGE" #4
+									"wifimas_SILENT_CHECKS" #5
+									"wifimas_PRINT_HINTS" #6
+									"wifimas_5GHZ_ENABLED" #7
+									"wifimas_FORCE_IPTABLES" #8
+									"wifimas_FORCE_NETWORK_MANAGER_KILLING" #9
+									"wifimas_MDK_VERSION" #10
+									"wifimas_PLUGINS_ENABLED" #11
+									"wifimas_DEVELOPMENT_MODE" #12
+									"wifimas_DEBUG_MODE" #13
+									"wifimas_WINDOWS_HANDLING" #14
 									)
 
 	declare -gA nonboolean_options_env_vars
@@ -16577,12 +16577,12 @@ function env_vars_values_validation() {
 	done
 
 	for item in "${ARRAY_ENV_NONBOOLEAN_VARS_ELEMENTS[@]}"; do
-		if [ "${item}" = "AIRGEDDON_WINDOWS_HANDLING" ]; then
+		if [ "${item}" = "wifimas_WINDOWS_HANDLING" ]; then
 			if ! [[ "${!item,,}" =~ ^(xterm|tmux)$ ]]; then
 				errors_on_configuration_vars["${item},invalid_value"]="${nonboolean_options_env_vars[${item},'default_value']}"
 				eval "export ${item}=${nonboolean_options_env_vars[${item},'default_value']}"
 			fi
-		elif [ "${item}" = "AIRGEDDON_MDK_VERSION" ]; then
+		elif [ "${item}" = "wifimas_MDK_VERSION" ]; then
 			if ! [[ "${!item,,}" =~ ^(mdk3|mdk4)$ ]]; then
 				errors_on_configuration_vars["${item},invalid_value"]="${nonboolean_options_env_vars[${item},'default_value']}"
 				eval "export ${item}=${nonboolean_options_env_vars[${item},'default_value']}"
@@ -16654,7 +16654,7 @@ function create_rcfile() {
 	done
 }
 
-#Detect if airgeddon is working inside a docker container
+#Detect if wifimas is working inside a docker container
 function docker_detection() {
 
 	debug_print
@@ -16670,7 +16670,7 @@ function initialize_extended_colorized_output() {
 	debug_print
 
 	colorize=""
-	if "${AIRGEDDON_BASIC_COLORS:-true}" && "${AIRGEDDON_EXTENDED_COLORS:-true}"; then
+	if "${wifimas_BASIC_COLORS:-true}" && "${wifimas_EXTENDED_COLORS:-true}"; then
 		if hash ccze 2> /dev/null; then
 			colorize="| ccze -A"
 		fi
@@ -16682,7 +16682,7 @@ function remap_colors() {
 
 	debug_print
 
-	if ! "${AIRGEDDON_BASIC_COLORS:-true}"; then
+	if ! "${wifimas_BASIC_COLORS:-true}"; then
 		green_color="${normal_color}"
 		green_color_title="${normal_color}"
 		red_color="${normal_color}"
@@ -16736,17 +16736,17 @@ function initialize_tmux() {
 
 	if [ "${1}" = "true" ]; then
 		if [ -n "${2}" ]; then
-			airgeddon_uid="${2}"
+			wifimas_uid="${2}"
 		else
 			exit ${exit_code}
 		fi
 	else
-		airgeddon_uid="${BASHPID}"
+		wifimas_uid="${BASHPID}"
 	fi
 
-	session_name="airgeddon${airgeddon_uid}"
+	session_name="wifimas${wifimas_uid}"
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		if hash tmux 2> /dev/null; then
 			transfer_to_tmux
 			if ! check_inside_tmux; then
@@ -16758,12 +16758,12 @@ function initialize_tmux() {
 }
 
 #Starting point of wifimas script inside newly created tmux session
-function start_airgeddon_from_tmux() {
+function start_wifimas_from_tmux() {
 
 	debug_print
 
 	tmux rename-window -t "${session_name}" "${tmux_main_window}"
-	tmux send-keys -t "${session_name}:${tmux_main_window}" "clear;cd ${scriptfolder};bash ${scriptname} \"true\" \"${airgeddon_uid}\"" ENTER
+	tmux send-keys -t "${session_name}:${tmux_main_window}" "clear;cd ${scriptfolder};bash ${scriptname} \"true\" \"${wifimas_uid}\"" ENTER
 	sleep 0.2
 	if [ "${1}" = "normal" ]; then
 		tmux attach -t "${session_name}"
@@ -16772,7 +16772,7 @@ function start_airgeddon_from_tmux() {
 	fi
 }
 
-#Create new tmux session exclusively for airgeddon
+#Create new tmux session exclusively for wifimas
 function create_tmux_session() {
 
 	debug_print
@@ -16781,10 +16781,10 @@ function create_tmux_session() {
 
 	if [ "${2}" = "true" ]; then
 		tmux new-session -d -s "${1}"
-		start_airgeddon_from_tmux "normal"
+		start_wifimas_from_tmux "normal"
 	else
 		tmux new-session -d -s "${1}"
-		start_airgeddon_from_tmux "nested"
+		start_wifimas_from_tmux "nested"
 	fi
 }
 
@@ -16895,7 +16895,7 @@ function wait_for_process() {
 		sleep 0.2
 	done
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		tmux kill-window -t "${session_name}:${2}"
 	fi
 }
@@ -16906,7 +16906,7 @@ function get_tmux_process_id() {
 
 	debug_print
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 
 		local process_cmd_line
 		local process_pid
@@ -16936,7 +16936,7 @@ function manage_output() {
 	window_name="${3}"
 	command_tail=" > /dev/null 2>&1 &"
 
-	case "${AIRGEDDON_WINDOWS_HANDLING}" in
+	case "${wifimas_WINDOWS_HANDLING}" in
 		"tmux")
 			local tmux_color
 			tmux_color=""
@@ -16992,13 +16992,13 @@ function parse_plugins() {
 function validate_plugin_requirements() {
 
 	if [ -n "${plugin_minimum_ag_affected_version}" ]; then
-		if compare_floats_greater_than "${plugin_minimum_ag_affected_version}" "${airgeddon_version}"; then
+		if compare_floats_greater_than "${plugin_minimum_ag_affected_version}" "${wifimas_version}"; then
 			return 1
 		fi
 	fi
 
 	if [ -n "${plugin_maximum_ag_affected_version}" ]; then
-		if compare_floats_greater_than "${airgeddon_version}" "${plugin_maximum_ag_affected_version}"; then
+		if compare_floats_greater_than "${wifimas_version}" "${plugin_maximum_ag_affected_version}"; then
 			return 1
 		fi
 	fi
@@ -17219,7 +17219,7 @@ function validate_et_internet_interface() {
 	return 0
 }
 
-#Check for access to airgeddon repository
+#Check for access to wifimas repository
 function check_repository_access() {
 
 	debug_print
@@ -17327,16 +17327,16 @@ function autoupdate_check() {
 
 	if check_repository_access; then
 		local version_checked=0
-		airgeddon_last_version=$(timeout -s SIGTERM 15 curl -L ${urlscript_directlink} 2> /dev/null | grep "wifimas_version=" | head -n 1 | cut -d "\"" -f 2)
+		wifimas_last_version=$(timeout -s SIGTERM 15 curl -L ${urlscript_directlink} 2> /dev/null | grep "wifimas_version=" | head -n 1 | cut -d "\"" -f 2)
 
-		if [ -n "${airgeddon_last_version}" ]; then
+		if [ -n "${wifimas_last_version}" ]; then
 			version_checked=1
 		else
 			http_proxy_detect
 			if [ "${http_proxy_set}" -eq 1 ]; then
 
-				airgeddon_last_version=$(timeout -s SIGTERM 15 curl --proxy "${http_proxy}" -L ${urlscript_directlink} 2> /dev/null | grep "airgeddon_version=" | head -n 1 | cut -d "\"" -f 2)
-				if [ -n "${airgeddon_last_version}" ]; then
+				wifimas_last_version=$(timeout -s SIGTERM 15 curl --proxy "${http_proxy}" -L ${urlscript_directlink} 2> /dev/null | grep "wifimas_version=" | head -n 1 | cut -d "\"" -f 2)
+				if [ -n "${wifimas_last_version}" ]; then
 					version_checked=1
 				else
 					language_strings "${language}" 5 "yellow"
@@ -17347,7 +17347,7 @@ function autoupdate_check() {
 		fi
 
 		if [ "${version_checked}" -eq 1 ]; then
-			if compare_floats_greater_than "${airgeddon_last_version}" "${airgeddon_version}"; then
+			if compare_floats_greater_than "${wifimas_last_version}" "${wifimas_version}"; then
 				language_strings "${language}" 213 "yellow"
 				download_last_version
 			else
@@ -17572,7 +17572,7 @@ function main() {
 	initialize_script_settings
 	initialize_colors
 	env_vars_initialization
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]; then
 		initialize_tmux "${1}" "${2}"
 	fi
 	initialize_instance_settings
@@ -17580,7 +17580,7 @@ function main() {
 	detect_distro_phase2
 	special_distro_features
 
-	if "${AIRGEDDON_AUTO_CHANGE_LANGUAGE:-true}"; then
+	if "${wifimas_AUTO_CHANGE_LANGUAGE:-true}"; then
 		autodetect_language
 	fi
 
@@ -17591,7 +17591,7 @@ function main() {
 	set_mdk_version
 	dependencies_modifications
 
-	if "${AIRGEDDON_PLUGINS_ENABLED:-true}"; then
+	if "${wifimas_PLUGINS_ENABLED:-true}"; then
 		parse_plugins "$@"
 		apply_plugin_functions_rewriting
 	fi
@@ -17605,7 +17605,7 @@ function main() {
 	set_default_save_path
 	graphics_prerequisites
 
-	if [[ "${AIRGEDDON_WINDOWS_HANDLING}" = "tmux" ]] && [[ "${tmux_error}" -eq 1 ]]; then
+	if [[ "${wifimas_WINDOWS_HANDLING}" = "tmux" ]] && [[ "${tmux_error}" -eq 1 ]]; then
 		language_strings "${language}" 86 "title"
 		echo
 		language_strings "${language}" 621 "yellow"
@@ -17616,7 +17616,7 @@ function main() {
 		exit ${exit_code}
 	fi
 
-	if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+	if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 		check_graphics_system
 		detect_screen_resolution
 	fi
@@ -17624,8 +17624,8 @@ function main() {
 	set_possible_aliases
 	initialize_optional_tools_values
 
-	if ! "${AIRGEDDON_DEVELOPMENT_MODE:-false}"; then
-		if ! "${AIRGEDDON_SKIP_INTRO:-false}"; then
+	if ! "${wifimas_DEVELOPMENT_MODE:-false}"; then
+		if ! "${wifimas_SKIP_INTRO:-false}"; then
 			language_strings "${language}" 86 "title"
 			language_strings "${language}" 6 "blue"
 			echo
@@ -17653,7 +17653,7 @@ function main() {
 		check_root_permissions
 		check_wsl
 
-		if [ "${AIRGEDDON_WINDOWS_HANDLING}" = "xterm" ]; then
+		if [ "${wifimas_WINDOWS_HANDLING}" = "xterm" ]; then
 			echo
 			if [[ "${resolution_detected}" -eq 1 ]] && [[ "${xterm_ok}" -eq 1 ]]; then
 				language_strings "${language}" 294 "blue"
