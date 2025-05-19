@@ -409,7 +409,7 @@ function check_language_strings() {
 		generate_dynamic_line "wifimas" "title"
 		if [ "${language_file_found}" -eq 0 ]; then
 			echo_red "${language_strings_no_file[${language}]}"
-			if [ "${wifimas_version}" = "6.1" ]; then
+			if [ "" = "6.1" ]; then
 				echo
 				echo_yellow "${language_strings_first_time[${language}]}"
 			fi
@@ -571,19 +571,19 @@ function language_strings_handling_messages() {
 	language_strings_first_time["CHINESE"]="如果您在自动更新后看到此消息，请不要害怕！这可能是因为 wifimas 从 6.1 版本开始有不同的文件结构。会自动修复"
 
 	declare -gA language_strings_exiting
-	language_strings_exiting["ENGLISH"]="Exiting wifimas script v${wifimas_version} - See you soon! :)"
-	language_strings_exiting["SPANISH"]="Saliendo de wifimas script v${wifimas_version} - Nos vemos pronto! :)"
-	language_strings_exiting["FRENCH"]="Fermeture du script wifimas v${wifimas_version} - A bientôt! :)"
-	language_strings_exiting["CATALAN"]="Sortint de wifimas script v${wifimas_version} - Ens veiem aviat! :)"
-	language_strings_exiting["PORTUGUESE"]="Saindo do script wifimas v${wifimas_version} - Até breve! :)"
-	language_strings_exiting["RUSSIAN"]="Выход из скрипта wifimas v${wifimas_version} - До встречи! :)"
-	language_strings_exiting["GREEK"]="Κλείσιμο του wifimas v${wifimas_version} - Αντίο :)"
-	language_strings_exiting["ITALIAN"]="Uscendo dallo script wifimas v${wifimas_version} - A presto! :)"
-	language_strings_exiting["POLISH"]="Wyjście z skryptu wifimas v${wifimas_version} - Do zobaczenia wkrótce! :)"
-	language_strings_exiting["GERMAN"]="Sie verlassen wifimas v${wifimas_version} - Bis bald! :)"
-	language_strings_exiting["TURKISH"]="wifimas yazılımından çıkış yapılıyor v${wifimas_version} - Yakında görüşürüz! :)"
-	language_strings_exiting["ARABIC"]="الخروج من البرنامج wifimas v${wifimas_version}- نراكم قريبًا! :)"
-	language_strings_exiting["CHINESE"]="退出 wifimas 脚本 v${wifimas_version} - 待会见！ :)"
+	language_strings_exiting["ENGLISH"]="Exiting wifimas script v - See you soon! :)"
+	language_strings_exiting["SPANISH"]="Saliendo de wifimas script v - Nos vemos pronto! :)"
+	language_strings_exiting["FRENCH"]="Fermeture du script wifimas v- A bientôt! :)"
+	language_strings_exiting["CATALAN"]="Sortint de wifimas script v - Ens veiem aviat! :)"
+	language_strings_exiting["PORTUGUESE"]="Saindo do script wifimas v - Até breve! :)"
+	language_strings_exiting["RUSSIAN"]="Выход из скрипта wifimas v - До встречи! :)"
+	language_strings_exiting["GREEK"]="Κλείσιμο του wifimas v - Αντίο :)"
+	language_strings_exiting["ITALIAN"]="Uscendo dallo script wifimas v - A presto! :)"
+	language_strings_exiting["POLISH"]="Wyjście z skryptu wifimas v - Do zobaczenia wkrótce! :)"
+	language_strings_exiting["GERMAN"]="Sie verlassen wifimas v - Bis bald! :)"
+	language_strings_exiting["TURKISH"]="wifimas yazılımından çıkış yapılıyor v - Yakında görüşürüz! :)"
+	language_strings_exiting["ARABIC"]="الخروج من البرنامج wifimas v- نراكم قريبًا! :)"
+	language_strings_exiting["CHINESE"]="退出 wifimas 脚本 v - 待会见！ :)"
 
 	declare -gA language_strings_key_to_continue
 	language_strings_key_to_continue["ENGLISH"]="Press [Enter] key to continue..."
@@ -16992,13 +16992,13 @@ function parse_plugins() {
 function validate_plugin_requirements() {
 
 	if [ -n "${plugin_minimum_ag_affected_version}" ]; then
-		if compare_floats_greater_than "${plugin_minimum_ag_affected_version}" "${wifimas_version}"; then
+		if compare_floats_greater_than "${plugin_minimum_ag_affected_version}" ""; then
 			return 1
 		fi
 	fi
 
 	if [ -n "${plugin_maximum_ag_affected_version}" ]; then
-		if compare_floats_greater_than "${wifimas_version}" "${plugin_maximum_ag_affected_version}"; then
+		if compare_floats_greater_than "" "${plugin_maximum_ag_affected_version}"; then
 			return 1
 		fi
 	fi
@@ -17347,7 +17347,7 @@ function autoupdate_check() {
 		fi
 
 		if [ "${version_checked}" -eq 1 ]; then
-			if compare_floats_greater_than "${wifimas_last_version}" "${wifimas_version}"; then
+			if compare_floats_greater_than "${wifimas_last_version}" ""; then
 				language_strings "${language}" 213 "yellow"
 				download_last_version
 			else
