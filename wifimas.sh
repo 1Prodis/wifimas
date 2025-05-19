@@ -14816,16 +14816,16 @@ function credits_option() {
 	echo
 	language_strings "${language}" 73 "blue"
 	echo
-	echo -e "${green_color}                                                                                     
-	sleep 0.15 && echo -e "                                                                               
-	sleep 0.15 && echo -e "${yellow_color}      ____                _ _                          
-	sleep 0.15 && echo -e "${yellow_color}     |  _ \ _ __ ___   __| (_)___                      
-	sleep 0.15 && echo -e "${yellow_color}     | |_) | '__/ _ \ / _` | / __|                     
-	sleep 0.15 && echo -e "${yellow_color}     |  __/| | | (_) | (_| | \__ \                       
-	sleep 0.15 && echo -e "${yellow_color}     |_|   |_|  \___/ \__,_|_|___/                       
-	sleep 0.15 && echo -e "${yellow_color}                                                          
-	sleep 0.15 && echo -e "                                                                               
-	sleep 0.15 && echo -e "                                                                                      
+	echo -e "${green_color}                                                            .-\"\"\"\"-."
+	sleep 0.15 && echo -e "                                                           /        \ "   
+	sleep 0.15 && echo -e "${yellow_color}      ____                _ _        "                  ${green_color} /_        _\ "  
+	sleep 0.15 && echo -e "${yellow_color}     |  _ \ _ __ ___   __| (_)___       "              ${green_color} // \      / \\\\\ "          
+	sleep 0.15 && echo -e "${yellow_color}     | |_) | '__/ _ \ / _` | / __|    "                ${green_color} |\__\    /__/|"  
+	sleep 0.15 && echo -e "${yellow_color}     |  __/| | | (_) | (_| | \__ \     "                ${green_color} \    ||    /"   
+	sleep 0.15 && echo -e "${yellow_color}     |_|   |_|  \___/ \__,_|_|___/   "                   ${green_color} \        /"  
+	sleep 0.15 && echo -e "${yellow_color}                                        "                 ${green_color} \  __  / " 
+	sleep 0.15 && echo -e "                                                             '.__.'"
+	sleep 0.15 && echo -e "                                                              |  |${normal_color}"                                     
 	echo
 	language_strings "${language}" 75 "blue"
 	echo
